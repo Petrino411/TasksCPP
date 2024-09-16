@@ -2,25 +2,25 @@
 #include <stdio.h>
 
 /**
-* 
+* @brief Расчитывает значение A
  * @param x const double
  * @param y const double
  * @param z const double 
- * @return Вычисляет занчение A
+ * @return Вычисляет значение A
  */
-double getA(double, double,double);
+double getA(double x, double y,double z);
 /**
- * 
+ * @brief Расчитывает значение B
  * @param x const double 
  * @param y const double 
  * @param z const double 
- * @return Вычисляет занчение B
+ * @return Вычисляет значение B
  */
-double getB(double, double,double);
+double getB(double x, double y,double z);
 
 
 /**
- * Точка входа в программу
+ * @brief Точка входа в программу
  * @return 0
  */
 int main()
