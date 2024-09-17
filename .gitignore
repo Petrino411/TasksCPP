@@ -6,3 +6,6 @@ riderModule.iml
 /Task1_1/x64
 /x64
 *.exe
+/Task1_2/x64
+/.idea
+TasksCPP.sln.DotSettings.user
