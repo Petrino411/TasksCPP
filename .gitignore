@@ -1,1 +1,8 @@
-bin/obj//packages/riderModule.iml/_ReSharper.Caches//Task1_1/x64/x64/Task1_1/x64/Debug*.exe
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+/Task1_1/x64
+/x64
+*.exe
