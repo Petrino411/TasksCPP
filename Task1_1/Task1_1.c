@@ -19,7 +19,6 @@ double get_a(double x, double y, double z);
  */
 double get_b(double x, double y, double z);
 
-
 /**
  * @brief Точка входа в программу
  * @return 0
