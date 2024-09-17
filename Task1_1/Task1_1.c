@@ -8,8 +8,8 @@
  * @param z const double 
  * @return Вычисляет значение A
  */
-
 double get_a(double x, double y, double z);
+
 /**
  * @brief Расчитывает значение B
  * @param x const double 
