@@ -3,11 +3,9 @@ obj/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
-/.idea
-Task1_1/x64/Debug/Task1_1.ilk
-/Task1_1/x64
 /Task1_1/x64
 /x64
-/Task1_1/x64
-/Task1_1/x64/Debug
-Task1_1/x64/Debug/Task1_1.tlog/CL.read.1.tlog
+*.exe
+/Task1_2/x64
+/.idea
+TasksCPP.sln.DotSettings.user
