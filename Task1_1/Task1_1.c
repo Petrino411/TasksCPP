@@ -8,7 +8,8 @@
  * @param z const double 
  * @return Вычисляет значение A
  */
-double getA(double x, double y,double z);
+
+double get_a(double x, double y, double z);
 /**
  * @brief Расчитывает значение B
  * @param x const double 
@@ -16,7 +17,7 @@ double getA(double x, double y,double z);
  * @param z const double 
  * @return Вычисляет значение B
  */
-double getB(double x, double y,double z);
+double get_b(double x, double y, double z);
 
 
 /**
@@ -27,18 +28,18 @@ int main()
 {
     const double x = 0.2;
     const double y = 0.004;
-    const double z = 1.1;   
-    printf("Task1 %f \n", getA(x,y,z));
-    printf("Task2 %f \n", getB(x,y,z));
+    const double z = 1.1;
+    printf("Task1 %f \n", get_a(x, y, z));
+    printf("Task2 %f \n", get_b(x, y, z));
     return 0;
 }
 
-double getA(double x,double y, double z)
+double get_a(double x, double y, double z)
 {
-    return pow( sin(pow(x,2) + pow(y,2)),3) - sqrt(x/y);
+    return pow(sin(pow(x, 2) + pow(z, 2)), 3) - sqrt(x / y);
 }
 
-double getB(double x,double y, double z)
+double get_b(double x, double y, double z)
 {
-    return pow(x,2)/z + pow(cos(x+y),3);
+    return pow(x, 2) / z + pow(cos(x + y), 3);
 }
