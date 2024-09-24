@@ -5,20 +5,20 @@
 /**
  * @brief Переводит байты в мегабайты
  * @param bytes - количество байт
- * @return int - количество мегабайт
+ * @return double - количество мегабайт
  */
 double convert_to_mb(int bytes);
 
 /**
  * @brief Переводит байты в гигабайты
  * @param bytes - количество байт
- * @return int - количество гигабайт
+ * @return double - количество гигабайт
  */
 double convert_to_gb(int bytes);
 
 /**
  * @brief Функция переводящая байты в мб и гб.
- * @return код завершения программы
+ * @return Код завершения программы
  */
 int solution(void);
 
@@ -39,7 +39,7 @@ int solution(void)
     puts("Введите байты: ");
     if (scanf_s("%d", &enter_bytes) != 1)
     {
-        printf("Ошибка ввода. Не удалось прочитать число.\n");
+        puts("Ошибка ввода. Не удалось прочитать число.\n");
         return 1; 
     }
 

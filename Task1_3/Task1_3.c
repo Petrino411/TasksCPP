@@ -4,7 +4,7 @@
 /**
  * @brief Вычисляет общее сопротивление последовательно соединенных резисторов
  * @param resistors массив float 
- * @param size количество сопротивлений
+ * @param size Количество сопротивлений
  * @return 
  */
 float count_r(const float* resistors, int size);
