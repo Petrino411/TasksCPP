@@ -7,7 +7,7 @@
  * @param size количество сопротивлений
  * @return 
  */
-float count_R(const float* resistors, int size);
+float count_r(const float* resistors, int size);
 
 /**
  * @brief Точка входа в программу
@@ -16,31 +16,41 @@ float count_R(const float* resistors, int size);
 int main(int argc, char* argv[])
 {
     int n = 0;
-    float* resitors;
-    printf("Enter the number of resistors: ");
-    if (scanf_s("%d", &n))
+    float* resistors;
+    puts("Enter the number of resistors: ");
+    if (!scanf_s("%d", &n))
     {
-        resitors = (float*)malloc(n * sizeof(float));
-        for (int i = 0; i < n; i++)
+        puts("Invalid input\n");
+        return 1;
+    }
+
+    resistors = (float*)malloc(n * sizeof(float));
+    if (resistors == NULL)
+    {
+        printf("Memory allocation failed\n");
+        return 1;
+    }
+    
+    for (int i = 0; i < n; i++)
+    {
+        printf("Enter resistor #%d: ", i + 1);
+        if (scanf_s("%f", &resistors[i]) != 1)
         {
-            printf("Enter resitor #%d: ", i + 1);
-            if (!scanf_s("%f", &resitors[i]))
-            {
-                printf("Invalid input\n");
-            }
+            printf("Invalid input for resistor #%d\n", i + 1);
+            free(resistors);
+            return 1;
         }
-        float resistance = count_R(resitors, n);
-        printf("Resistance: %f\n", resistance);
-        free(resitors);
     }
-    else
-    {
-        printf("Invalid input\n");
-    }
+    
+    float resistance = count_r(resistors, n);
+    printf("Total resistance: %f\n", resistance);
+    
+    free(resistors);
+    
     return 0;
 }
 
-float count_R(const float* resistors, int size)
+float count_r(const float* resistors, int size)
 {
     float sum = 0;
     for (int i = 0; i < size; i++)

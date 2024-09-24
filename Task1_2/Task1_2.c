@@ -1,4 +1,5 @@
-#include <locale.h>
+﻿#include <locale.h>
+#include <math.h>
 #include <stdio.h>
 
 /**
@@ -6,14 +7,20 @@
  * @param bytes - количество байт
  * @return int - количество мегабайт
  */
-float convert_to_MB(float bytes);
+double convert_to_mb(int bytes);
 
 /**
  * @brief Переводит байты в гигабайты
  * @param bytes - количество байт
  * @return int - количество гигабайт
  */
-float convert_to_GB(float bytes);
+double convert_to_gb(int bytes);
+
+/**
+ * @brief Функция переводящая байты в мб и гб.
+ * @return код завершения программы
+ */
+int solution(void);
 
 /**
  * @brief Точка входа в программу
@@ -22,29 +29,33 @@ float convert_to_GB(float bytes);
 int main(int argc, char* argv[])
 {
     setlocale(LC_ALL, "Rus");
+    solution();
+}
+
+
+int solution(void)
+{
+    int enter_bytes = 0;
+    puts("Введите байты: ");
+    if (scanf_s("%d", &enter_bytes) != 1)
+    {
+        printf("Ошибка ввода. Не удалось прочитать число.\n");
+        return 1; 
+    }
+
+    printf("МБ: %lf\n", convert_to_mb(enter_bytes));
+    printf("ГБ: %lf\n", convert_to_gb(enter_bytes));
     
-    float enter_bytes = 0;
-    printf("Введите байты: ");
-    scanf_s("%f", &enter_bytes);
-    if (enter_bytes != 0)
-    {
-        printf("МБ:%f\n", convert_to_MB(enter_bytes));
-        printf("ГБ:%f\n", convert_to_GB(enter_bytes));
-    }
-    else
-    {
-        printf("Непредвиденная ошибка");
-    }
     return 0;
     
 }
 
-float convert_to_MB(float bytes)
+double convert_to_mb(int bytes)
 {
-    return bytes / 1024;
+    return bytes / pow(2,10);
 }
 
-float convert_to_GB(float bytes)
+double convert_to_gb(int bytes)
 {
-    return bytes / 1024 / 1024;
+    return bytes / (pow(2,10) * pow(2,10));
 }
