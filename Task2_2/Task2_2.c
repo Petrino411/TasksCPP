@@ -20,14 +20,14 @@ int main(int argc, char* argv[])
     setlocale(LC_ALL, "Rus");
     double x = 0;
 
-    printf("Введите значение x: \n");
+    puts("Введите значение x:");
     if (scanf_s("%lf", &x))
     {
         printf("Значение y: %lf\n", get_y(x));
     }
     else
     {
-        printf("Ошибка ввода\n");
+        puts("Ошибка ввода");
     }
     
     return 0;
