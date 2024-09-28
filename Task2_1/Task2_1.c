@@ -27,46 +27,49 @@ int main(int argc, char* argv[])
 {
     setlocale(LC_ALL, "Rus");
     double length = 0, width = 0, height = 0;
+    puts("1. Объем");
+    puts("2. Площадь поверхности");
+    puts("3. Выход");
+
     printf("Введите длину, ширину, высоту в одну строку через пробел: ");
-    scanf_s("%lf %lf %lf", &length, &width, &height);
-    int choice = 0;
-    int is_running = 1;
-    while (is_running)
+    if (!scanf_s("%lf %lf %lf", &length, &width, &height))
     {
-        if (choice == 0)
+        return 1;
+    }
+    int choice = 0;
+    while (1)
+    {
+        puts("Введите 1 или 2 или 3");
+        if (scanf_s("%d", &choice) != 1)
         {
-            printf("1. Объем\n");
-            printf("2. Площадь поверхности\n");
-            printf("3. Выход\n");
+            puts("Неверный ввод");
+            while (getchar() != '\n'); // necessary cringe to clear buffer bcs scanf_s don't do it
+            continue;
         }
-        printf("Введите 1 или 2 или 3\n");
-        if (scanf_s("%d", &choice))
+        switch (choice)
         {
-            if (choice == 1)
+        case 1:
             {
                 double volume = get_square(length, width, height);
                 printf("Объем: %lf\n", volume);
+                break;
             }
-            else if (choice == 2)
+        case 2:
             {
                 double square = get_square(length, width, height);
                 printf("Площаль поверхности %lf\n", square);
+                break;
             }
-            else if (choice == 3)
+        case 3:
             {
-                printf("Завершение работы");
-                is_running = 0;
+                puts("Завершение работы");
+                return 0;
             }
-        }
-        else
-        {
-            printf("Неверный ввод");
+        default: break;
         }
     }
-
-    return 0;
+    
 }
-
 
 double get_square(double length, double width, double height)
 {
