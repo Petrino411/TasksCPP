@@ -5,10 +5,28 @@
 #include <time.h>
 
 /**
- * @brief Выводит приетствие соответствующее полученному из структуры времени
- * @param input_time Структура tm с заполненными параметрами часы и минуты
+ * @brief Перечисление для времени суток
  */
-void hello_function(const struct tm* input_time);
+typedef enum {
+    MORNING,
+    AFTERNOON,
+    EVENING,
+    NIGHT,
+    INVALID_TIME
+} TimeOfDay;
+
+/**
+ * @brief Определяет время суток на основе введенного времени
+ * @param input_time Структура tm с заполненными параметрами часы и минуты
+ * @return Значение типа TimeOfDay (утро, день, вечер, ночь)
+ */
+TimeOfDay determine_time_of_day(const struct tm* input_time);
+
+/**
+ * @brief Выводит приветствие соответствующее времени суток
+ * @param time_of_day Время суток, определённое функцией determine_time_of_day
+ */
+void hello_function(TimeOfDay time_of_day);
 
 /**
  * @brief Точка входа в программу
@@ -29,43 +47,72 @@ int main(int argc, char* argv[])
         if (strcmp(input, "q") == 0)
         {
             is_running = 0;
-            printf("Выход из программы...\n");
+            puts("Выход из программы...");
             continue;
         }
 
         if (sscanf_s(input, "%d:%d", &time_info.tm_hour, &time_info.tm_min) != 2)
         {
-            printf("Неправильный формат ввода.\n");
+            puts("Неправильный формат ввода.");
             continue;
         }
 
-        hello_function(&time_info);
+        TimeOfDay time_of_day = determine_time_of_day(&time_info);
+        hello_function(time_of_day);
     }
 
     return 0;
 }
 
-void hello_function(const struct tm* input_time)
+/**
+ * @brief Определяет время суток на основе введённого времени
+ * @param input_time Структура tm с заполненными параметрами часы и минуты
+ * @return Время суток (утро, день, вечер, ночь)
+ */
+TimeOfDay determine_time_of_day(const struct tm* input_time)
 {
     if (input_time->tm_hour > 23 || input_time->tm_min > 59)
     {
-        printf("Неправильный формат ввода.\n");
-        return;
+        return INVALID_TIME;
     }
-    if (input_time->tm_hour <= 12 && input_time->tm_hour >= 6)
+    if (input_time->tm_hour >= 6 && input_time->tm_hour <= 12)
     {
-        printf("Доброе утро\n");
-        return;
+        return MORNING;
     }
     if (input_time->tm_hour > 12 && input_time->tm_hour < 17)
     {
-        printf("Добрый день\n");
-        return;
+        return AFTERNOON;
     }
     if (input_time->tm_hour >= 17 && input_time->tm_hour < 23)
     {
-        printf("Добрый вечер\n");
-        return;
+        return EVENING;
     }
-    printf("Доброй ночи\n");
+    return NIGHT;
+}
+
+/**
+ * @brief Выводит приветствие на основе времени суток
+ * @param time_of_day Время суток
+ */
+void hello_function(TimeOfDay time_of_day)
+{
+    switch (time_of_day)
+    {
+        case MORNING:
+            puts("Доброе утро");
+            break;
+        case AFTERNOON:
+            puts("Добрый день");
+            break;
+        case EVENING:
+            puts("Добрый вечер");
+            break;
+        case NIGHT:
+            puts("Доброй ночи");
+            break;
+        case INVALID_TIME:
+        default:
+            puts("Неправильный формат времени.");
+            break;
+    }
 }
