@@ -1,6 +1,7 @@
 ﻿#include <locale.h>
 #include <math.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
  * @brief Переводит байты в мегабайты
@@ -17,10 +18,10 @@ double convert_to_mb(int bytes);
 double convert_to_gb(int bytes);
 
 /**
- * @brief Функция переводящая байты в мб и гб.
- * @return Код завершения программы
+ * @brief Функция ввоода целого числа
+ * @return Целое число
  */
-int solution(void);
+int input();
 
 /**
  * @brief Точка входа в программу
@@ -29,33 +30,32 @@ int solution(void);
 int main(int argc, char* argv[])
 {
     setlocale(LC_ALL, "Rus");
-    solution();
-}
-
-
-int solution(void)
-{
-    int enter_bytes = 0;
     puts("Введите байты: ");
-    if (scanf_s("%d", &enter_bytes) != 1)
-    {
-        puts("Ошибка ввода. Не удалось прочитать число.\n");
-        return 1; 
-    }
+    int enter_bytes = input();
 
     printf("МБ: %lf\n", convert_to_mb(enter_bytes));
     printf("ГБ: %lf\n", convert_to_gb(enter_bytes));
-    
+
     return 0;
-    
+}
+
+
+int input()
+{
+    int value = 0;
+    if (scanf_s("%d", &value) != 1)
+    {
+        abort();
+    }
+    return value;
 }
 
 double convert_to_mb(int bytes)
 {
-    return bytes / pow(2,10);
+    return bytes / pow(2, 10);
 }
 
 double convert_to_gb(int bytes)
 {
-    return bytes / (pow(2,10) * pow(2,10));
+    return bytes / (pow(2, 10) * pow(2, 10));
 }
