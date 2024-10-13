@@ -34,16 +34,15 @@ int main(int argc, char* argv[])
 {
     const double a = 0.9;
     setlocale(LC_ALL, "Rus");
-    double x = 0;
 
     puts("Введите значение x:");
 
-    x = double_input();
+    double x = double_input();
     if (x > 1)
     {
         printf("Значение y: %lf\n", get_y1(a, x));
     }
-    if (x <= 1)
+    else
     {
         printf("Значение y: %lf\n", get_y2(a, x));
     }

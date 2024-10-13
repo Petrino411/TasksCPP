@@ -31,22 +31,16 @@ double get_volume(double length, double width, double height);
 double get_square(double length, double width, double height);
 
 /**
- * @ Функция ввода целого числа
- * @return int
+ * @ Функция ввода вещестенного числа
+ * @return double
  */
-int int_input();
+double double_input(void);
 
 /**
- * Считывает длину, ширину, высоту в одну строку через пробел
- * @remark При неудаче - abort
+ * Пытается получить выбор пользователя
+ * @return UserChoice
  */
-void read_dimensions(double* length, double* width, double* height);
-
-/**
- * Пытается считывать выбор пользователя до тех пор, пока не будет введено верное значение
- * @return 
- */
-int get_user_choice();
+int get_user_choice(void);
 /**
  * @brief Точка входа в программу
  * @return 0
@@ -54,13 +48,17 @@ int get_user_choice();
 int main(int argc, char* argv[])
 {
     setlocale(LC_ALL, "Rus");
-    double length = 0, width = 0, height = 0;
 
     printf("%d. Объем\n", VOLUME);
     printf("%d. Площадь поверхности\n", SURFACE_AREA);
     printf("%d. Выход\n", EXIT);
-    
-    read_dimensions(&length, &width, &height);
+
+    puts("Введите длину");
+    double length = double_input();
+    puts("Введите ширину");
+    double width = double_input();
+    puts("Введите высоту");
+    double height = double_input();
 
     while (1)
     {
@@ -87,40 +85,34 @@ int main(int argc, char* argv[])
             }
         default:
             {
-                puts("Неверный выбор, попробуйте снова.");
-                break;
+                puts("Неверный ввод. Попробуйте снова.");
+                while (getchar() != '\n'); // Очищаем буфер ввода
             }
         }
     }
 }
 
-int get_user_choice()
+int get_user_choice(void)
 {
     UserChoice choice = EXIT;
-    while (1)
-    {
-        puts("Введите 1 (Объем) или 2 (Площадь поверхности) или 3 (Выход):");
+    printf("Введите %d (Объем) или %d (Площадь поверхности) или %d (Выход):", VOLUME, SURFACE_AREA, EXIT);
 
-        if (scanf_s("%d", &choice) != 1 || choice < 1 || choice > 3)
-        {
-            puts("Неверный ввод. Попробуйте снова.");
-            while (getchar() != '\n'); // Очищаем буфер ввода
-            continue;
-        }
-        return choice;
+    if (scanf_s("%d", &choice) != 1 || choice < 1 || choice > 3)
+    {
+        return 0;
     }
+    return choice;
 }
 
-
-void read_dimensions(double* length, double* width, double* height)
+double double_input(void)
 {
-    printf("Введите длину, ширину, высоту в одну строку через пробел: ");
-    if (!scanf_s("%lf %lf %lf", length, width, height))
+    double value = 0;
+    if (scanf_s("%lf", &value) != 1)
     {
         abort();
     }
+    return value;
 }
-
 
 double get_square(double length, double width, double height)
 {
