@@ -11,7 +11,9 @@ int int_input();
 
 double double_input();
 
-long long factorial(int n);
+long double factorial(int n);
+
+double get_sum_greater_equal_e(double e);
 
 /**
  * Выбор пользователя
@@ -26,6 +28,7 @@ typedef enum
 int main(int argc, char* argv[])
 {
     setlocale(LC_ALL, "Rus");
+    printf("Введите %d или %d\n", TASK_A, TASK_B);
     UserChoice choice = int_input();
     switch (choice)
     {
@@ -34,15 +37,21 @@ int main(int argc, char* argv[])
             puts("Введите n");
             int n = int_input();
             double sum = get_elements_sum(n);
-            printf("Сумма первых %d элементов последовательности = %lf",n,sum);
+            printf("Сумма первых %d элементов последовательности = %lf", n, sum);
             break;
         }
     case TASK_B:
         {
             puts("Введите e");
             double e = double_input();
+            printf("Cуммa всех членов последовательности, не меньших заданного числа %lf = %lf", e,
+                   get_sum_greater_equal_e(e));
             break;
-            
+        }
+    default:
+        {
+            puts("Неверный ввод");
+            abort();
         }
     }
     return 0;
@@ -50,7 +59,8 @@ int main(int argc, char* argv[])
 
 double get_element(int k)
 {
-    return pow(-1, k - 1) / factorial(2 * k - 1);
+    int sign = k % 2 == 0 ? -1 : 1;
+    return sign / factorial(2 * k - 1);
 }
 
 double get_elements_sum(int n)
@@ -62,6 +72,22 @@ double get_elements_sum(int n)
     }
     return sum;
 }
+
+double get_sum_greater_equal_e(double e)
+{
+    double sum = 0.0;
+    int k = 1;
+    double term = 1.0;
+
+    while (fabs(term) >= e)
+    {
+        term = get_element(k);  // Текущий член
+        sum += term;
+        k++;
+    }
+    return sum;
+}
+
 
 int int_input()
 {
@@ -83,10 +109,10 @@ double double_input()
     return value;
 }
 
-long long factorial(int n)
+long double factorial(int n)
 {
-    long long result = 1;
-    for (int i = 1; i <= n; i++)
+    long double result = 1.0;
+    for (int i = 1; i <= n; ++i)
     {
         result *= i;
     }
