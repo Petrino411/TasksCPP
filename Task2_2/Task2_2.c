@@ -10,7 +10,7 @@
  * @param x переменная x
  * @return Возвращает значение y
  */
-double get_y1(double a, double x);
+double get_y1(const double a, const double x);
 
 /**
  * @brief Вычисляет значение функции при x > 1
@@ -18,13 +18,13 @@ double get_y1(double a, double x);
  * @param x переменная x
  * @return Возвращает значение y
  */
-double get_y2(double a, double x);
+double get_y2(const double a, const double x);
 
 /**
  * @ Функция ввода вещестенного числа
  * @return double
  */
-double double_input();
+double double_input(void);
 
 /**
  * @brief Точка входа в программу

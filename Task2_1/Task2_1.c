@@ -88,9 +88,10 @@ int main(int argc, char* argv[])
     default:
         {
             puts("Неверный ввод. Попробуйте снова.");
-            while (getchar() != '\n'); // Очищаем буфер ввода
+            abort();
         }
     }
+    return 0;
 }
 
 int get_choice(void)
@@ -104,15 +105,6 @@ int get_choice(void)
     return choice;
 }
 
-int get_user_choice(void)
-{
-    int choice = get_choice();
-    if (choice < 1 || choice > 3)
-    {
-        abort();
-    }
-    return choice;
-}
 
 double double_input(void)
 {
