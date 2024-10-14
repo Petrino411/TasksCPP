@@ -6,16 +6,47 @@
 
 int int_input();
 
+/**
+ * @brief Вывод массива
+ * @param arr Указатель на 1 элемент массива
+ * @param size размер массива
+ */
 void print_array(int* arr, size_t size);
 
+/**
+ * @brief Заполняет массив случайными числами
+ * @param arr Указатель на 1 элемент массива
+ * @param size размер массива
+ */
 void fill_array_random(int* arr, size_t size);
 
+/**
+ * @brief Заполняет с клавиатуры массив
+ * @param arr Указатель на 1 элемент массива
+ * @param size размер массива
+ */
 void fill_array_manual(int* arr, size_t size);
 
+/**
+ * @brief Cумма элементов, значения которых по модулю меньше 10
+ * @param arr Указатель на 1 элемент массива
+ * @param size размер массива
+ * @return сумма
+ */
 int sum_of_elements_less_than_10(const int* arr, size_t size);
 
+/**
+ * Индексы тех элементов, значения которых больше значения последующего элемента.
+ * @param arr Указатель на 1 элемент массива
+ * @param size размер массива
+ */
 void print_indices_greater_than_next(const int* arr, size_t size);
 
+/**
+ * @brief Умножить все элементы массива, кратные 3, на третий элемент массива
+ * @param arr Указатель на 1 элемент массива
+ * @param size размер массива  
+ */
 void multiply_by_third_element(int* arr, size_t size);
 
 
@@ -32,7 +63,7 @@ int main()
     int arr[100];
 
 
-    printf("Введите количество элементов массива (не более %d): ", 100);
+    puts("Введите количество элементов массива (не более 100)");
     int size = int_input();
 
     printf("Выберите способ заполнения массива:\n");
@@ -65,9 +96,9 @@ int main()
 
     int sum = sum_of_elements_less_than_10(arr, size);
     printf("Сумма элементов, значения которых по модулю меньше 10: %d\n", sum);
-    
+
     print_indices_greater_than_next(arr, size);
-    
+
     multiply_by_third_element(arr, size);
     printf("Массив после умножения элементов, кратных 3, на третий элемент:\n");
     print_array(arr, size);
@@ -99,7 +130,7 @@ void fill_array_random(int* arr, size_t size)
     srand(time(0));
     for (size_t i = 0; i < size; i++)
     {
-        *(arr + i) = rand() % 81 - 40;
+        arr[i] = rand() % 81 - 40;
     }
 }
 
@@ -110,7 +141,7 @@ void fill_array_manual(int* arr, size_t size)
     for (size_t i = 0; i < size; i++)
     {
         printf("Элемент %llu: ", i + 1);
-        scanf_s("%d", arr + i);
+        arr[i] = int_input();
     }
 }
 
@@ -133,7 +164,7 @@ void print_indices_greater_than_next(const int* arr, size_t size)
     printf("Индексы элементов, которые больше следующего:\n");
     for (size_t i = 0; i < size - 1; i++)
     {
-        if (*(arr + i) > *(arr + i + 1))
+        if (arr[i] > arr[i + 1])
         {
             printf("%llu ", i);
         }
@@ -153,9 +184,9 @@ void multiply_by_third_element(int* arr, size_t size)
     int third_element = *(arr + 2);
     for (size_t i = 0; i < size; i++)
     {
-        if (*(arr + i) % 3 == 0)
+        if (arr[i] % 3 == 0)
         {
-            *(arr + i) *= third_element;
+            arr[i] *= third_element;
         }
     }
 }
