@@ -30,7 +30,11 @@ int int_input(void);
  */
 double double_input(void);
 
-
+/**
+ * Сумма элементов которые больше e
+ * @param e ограничение
+ * @return 
+ */
 double get_sum_greater_equal_e(const double e);
 
 /**
@@ -44,7 +48,10 @@ typedef enum
     TASK_B = 2
 } UserChoice;
 
-
+/**
+ * Точка входа
+ * @return 0
+ */
 int main(int argc, char* argv[])
 {
     setlocale(LC_ALL, "Rus");
@@ -101,8 +108,8 @@ double get_sum_greater_equal_e(double e)
     int k = 1;
     while (fabs(current) >= e + DBL_EPSILON)
     {
-        current = get_element(current, k);
         sum += current;
+        current = get_element(current, k);
         k++;
     }
     return sum;

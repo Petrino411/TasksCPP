@@ -10,8 +10,16 @@
  */
 long double sum_series(double x, long double eps);
 
+/**
+ * @ Функция ввода вещественного числа
+ * @return double
+ */
 double double_input(void);
 
+/**
+ * Точка входа в программу
+ * @return 0
+ */
 int main()
 {
     puts("Введите a, b, h, eps\n");

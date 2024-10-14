@@ -17,9 +17,15 @@ void printTable(const double bottom_limit, const double top_limit, const double 
  */
 double getY(const double x);
 
+/**
+ * @ Функция ввода вещественного числа
+ * @return double
+ */
 double double_input(void);
 
-
+/**
+ * Точка входа в программу
+ */
 int main(int argc, char* argv[])
 {
     double bottom_limit = double_input();
@@ -31,7 +37,7 @@ int main(int argc, char* argv[])
 
 void printTable(const double bottom_limit, const double top_limit, const double delta)
 {
-    for (double i = 0.1; i < 2.1; i += 0.1)
+    for (double i = bottom_limit; i < top_limit; i += delta)
     {
         printf("%.2f: %.2f\n",i, getY(i));
     }
