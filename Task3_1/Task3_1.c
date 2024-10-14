@@ -24,7 +24,6 @@ int factorial(int n);
 int main(int argc, char* argv[])
 {
     printTable();
-    // printf("%d\n", factorial(10));
     return 0;
 }
 

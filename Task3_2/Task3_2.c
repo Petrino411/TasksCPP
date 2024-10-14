@@ -1,16 +1,40 @@
-﻿#include <locale.h>
+﻿#include <float.h>
+#include <locale.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * @brief Элемент последовательности по счету k
+ * @param k - порядковый номер
+ * @return 
+ */
 double get_element(int k);
 
+/**
+ * @brief Сумма первых n элементов
+ * @param n Количество первых элементов
+ * @return 
+ */
 double get_elements_sum(int n);
 
+/**
+ * @ Функция ввода целого числа
+ * @return int
+ */
 int int_input();
 
+/**
+ * @ Функция ввода вещественного числа
+ * @return double
+ */
 double double_input();
 
+/**
+ * 
+ * @param n 
+ * @return 
+ */
 long double factorial(int n);
 
 double get_sum_greater_equal_e(double e);
@@ -57,32 +81,32 @@ int main(int argc, char* argv[])
     return 0;
 }
 
-double get_element(int k)
+double get_element(double previous_element, int k)
 {
-    int sign = k % 2 == 0 ? -1 : 1;
-    return sign / factorial(2 * k - 1);
+    return previous_element * -1 / (4 * pow(k, 2) + 2 * k);
 }
 
 double get_elements_sum(int n)
 {
-    double sum = 0;
+    double current = -1;
+    double sum = current;
     for (int i = 1; i <= n; i++)
     {
-        sum += get_element(i);
+        sum += get_element(current, i);
+        printf("cur_sum = %lf\n", sum);
     }
     return sum;
 }
 
 double get_sum_greater_equal_e(double e)
 {
-    double sum = 0.0;
+    double current = -1;
+    double sum = 0;
     int k = 1;
-    double term = 1.0;
-
-    while (fabs(term) >= e)
+    while (fabs(current) >= e + DBL_EPSILON)
     {
-        term = get_element(k);  // Текущий член
-        sum += term;
+        current = get_element(current, k);
+        sum += current;
         k++;
     }
     return sum;
