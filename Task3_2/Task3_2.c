@@ -9,38 +9,34 @@
  * @param k - порядковый номер
  * @return 
  */
-double get_element(int k);
+double get_element(const int k);
 
 /**
  * @brief Сумма первых n элементов
  * @param n Количество первых элементов
  * @return 
  */
-double get_elements_sum(int n);
+double get_elements_sum(const int n);
 
 /**
  * @ Функция ввода целого числа
  * @return int
  */
-int int_input();
+int int_input(void);
 
 /**
  * @ Функция ввода вещественного числа
  * @return double
  */
-double double_input();
+double double_input(void);
 
-/**
- * 
- * @param n 
- * @return 
- */
-long double factorial(int n);
 
-double get_sum_greater_equal_e(double e);
+double get_sum_greater_equal_e(const double e);
 
 /**
  * Выбор пользователя
+ * TASK_A - Сумма первых n элементов
+ * TASK_B - Сумма элементов не больших e
  */
 typedef enum
 {
@@ -90,7 +86,7 @@ double get_elements_sum(int n)
 {
     double current = -1;
     double sum = current;
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i < n; i++)
     {
         sum += get_element(current, i);
         printf("cur_sum = %lf\n", sum);
