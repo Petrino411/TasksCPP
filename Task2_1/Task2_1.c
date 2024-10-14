@@ -4,6 +4,9 @@
 
 /**
  * Перечисление выборов пользователя
+ * VOLUME - объем
+ * SURFACE_AREA - площадь поверхности
+ * EXIT - выход
  */
 typedef enum
 {
@@ -19,7 +22,7 @@ typedef enum
  * @param height высота
  * @return double - Объем параллелепипеда
  */
-double get_volume(double length, double width, double height);
+double get_volume(const double length, const double width, const double height);
 
 /**
  * @brief Вычисляет площадь поверхности параллелепипеда
@@ -28,7 +31,7 @@ double get_volume(double length, double width, double height);
  * @param height высота
  * @return double - Площадь поверхности параллелепипеда
  */
-double get_square(double length, double width, double height);
+double get_square(const double length, const double width, const double height);
 
 /**
  * @ Функция ввода вещестенного числа
@@ -60,46 +63,53 @@ int main(int argc, char* argv[])
     puts("Введите высоту");
     double height = double_input();
 
-    while (1)
-    {
-        UserChoice choice = get_user_choice();
 
-        switch (choice)
+    UserChoice choice = get_user_choice();
+
+    switch (choice)
+    {
+    case VOLUME:
         {
-        case VOLUME:
-            {
-                double volume = get_volume(length, width, height);
-                printf("Объем: %lf\n", volume);
-                break;
-            }
-        case SURFACE_AREA:
-            {
-                double square = get_square(length, width, height);
-                printf("Площадь поверхности: %lf\n", square);
-                break;
-            }
-        case EXIT:
-            {
-                puts("Завершение работы");
-                return 0;
-            }
-        default:
-            {
-                puts("Неверный ввод. Попробуйте снова.");
-                while (getchar() != '\n'); // Очищаем буфер ввода
-            }
+            double volume = get_volume(length, width, height);
+            printf("Объем: %lf\n", volume);
+            break;
+        }
+    case SURFACE_AREA:
+        {
+            double square = get_square(length, width, height);
+            printf("Площадь поверхности: %lf\n", square);
+            break;
+        }
+    case EXIT:
+        {
+            puts("Завершение работы");
+            return 0;
+        }
+    default:
+        {
+            puts("Неверный ввод. Попробуйте снова.");
+            while (getchar() != '\n'); // Очищаем буфер ввода
         }
     }
 }
 
-int get_user_choice(void)
+int get_choice(void)
 {
     UserChoice choice = EXIT;
     printf("Введите %d (Объем) или %d (Площадь поверхности) или %d (Выход):", VOLUME, SURFACE_AREA, EXIT);
-
-    if (scanf_s("%d", &choice) != 1 || choice < 1 || choice > 3)
+    if (scanf_s("%d", &choice) != 1)
     {
-        return 0;
+        abort();
+    }
+    return choice;
+}
+
+int get_user_choice(void)
+{
+    int choice = get_choice();
+    if (choice < 1 || choice > 3)
+    {
+        abort();
     }
     return choice;
 }
@@ -114,12 +124,12 @@ double double_input(void)
     return value;
 }
 
-double get_square(double length, double width, double height)
+double get_square(const double length, const double width, const double height)
 {
     return 2 * (length * width + width * height + length * height);
 }
 
-double get_volume(double length, double width, double height)
+double get_volume(const double length, const double width, const double height)
 {
     return length * width * height;
 }
