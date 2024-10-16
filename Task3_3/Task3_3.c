@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 /**
- * 
+ * @brief Рассчитывает сумму на области определения 
  * @param x Значение x
  * @param eps погрешность
  * @return Сумма на области определения x 
@@ -12,7 +12,7 @@ long double sum_series(double x, long double eps);
 
 /**
  * @ Функция ввода вещественного числа
- * @return double
+ * @return Вещественное число
  */
 double double_input(void);
 

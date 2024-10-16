@@ -7,49 +7,47 @@
 /**
  * @brief Элемент последовательности по счету k
  * @param k - порядковый номер
- * @return 
+ * @return Элемент последовательности по счету k
  */
 double get_element(const int k);
 
 /**
  * @brief Сумма первых n элементов
  * @param n Количество первых элементов
- * @return 
+ * @return Сумма первых n элементов
  */
 double get_elements_sum(const int n);
 
 /**
- * @ Функция ввода целого числа
- * @return int
+ * @brief Функция ввода целого числа
+ * @return Целое число
  */
 int int_input(void);
 
 /**
- * @ Функция ввода вещественного числа
+ * @brief Функция ввода вещественного числа
  * @return double
  */
 double double_input(void);
 
 /**
- * Сумма элементов которые больше e
+ *@brief Сумма элементов которые больше e
  * @param e ограничение
- * @return 
+ * @return Сумма всех элементов больше e
  */
 double get_sum_greater_equal_e(const double e);
 
 /**
- * Выбор пользователя
- * TASK_A - Сумма первых n элементов
- * TASK_B - Сумма элементов не больших e
+ * @brief Выбор пользователя
  */
 typedef enum
 {
-    TASK_A = 1,
-    TASK_B = 2
+    TASK_A = 1, /**< Задание 1 */
+    TASK_B = 2 /**< Задание 2 */
 } UserChoice;
 
 /**
- * Точка входа
+ *@brief Точка входа
  * @return 0
  */
 int main(int argc, char* argv[])
@@ -116,7 +114,7 @@ double get_sum_greater_equal_e(double e)
 }
 
 
-int int_input()
+int int_input(void)
 {
     int value = 0;
     if (scanf_s("%d", &value) != 1)
@@ -126,7 +124,7 @@ int int_input()
     return value;
 }
 
-double double_input()
+double double_input(void)
 {
     double value = 0;
     if (scanf_s("%lf", &value) != 1)

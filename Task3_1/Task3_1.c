@@ -18,13 +18,14 @@ void printTable(const double bottom_limit, const double top_limit, const double 
 double getY(const double x);
 
 /**
- * @ Функция ввода вещественного числа
+ * @brief Функция ввода вещественного числа
  * @return double
  */
 double double_input(void);
 
 /**
- * Точка входа в программу
+ * @brief Точка входа в программу
+ * @returns 0
  */
 int main(int argc, char* argv[])
 {
