@@ -1,6 +1,7 @@
 #ifndef AR_H_INCLUDED
 #define AR_H_INCLUDED
 
+
 /**
  *@brief Выбор метода заполнения массива
  */
@@ -9,7 +10,6 @@ typedef enum
  RANDOM_FILL = 1, /**< Рандомная генерация */
  MANUAL_FILL = 2  /**< Ввод с клавиатуры */
 } FillMethod;
-
 
 /**
  * @brief Функция ввода целого числа
@@ -40,26 +40,28 @@ void fill_array_random(int* arr, const size_t size);
 void fill_array_manual(int* arr, const size_t size);
 
 /**
- * @brief Cумма элементов, значения которых по модулю меньше 10
- * @param arr Указатель на 1 элемент массива
- * @param size Размер массива
- * @return сумма
- */
-int sum_of_elements_less_than_10(const int* arr, const size_t size);
-
-/**
- * Индексы тех элементов, значения которых больше значения последующего элемента.
- * @param arr Указатель на 1 элемент массива
+ * @brief Заменить минимальный по модулю элемент массива на 0
+* @param arr Указатель на 1 элемент массива
  * @param size Размер массива
  */
-void print_indices_greater_than_next(const int* arr, const size_t size);
+void replace_min_positive_with_zero(int* arr, const size_t size);
 
 /**
- * @brief Умножить все элементы массива, кратные 3, на третий элемент массива
- * @param arr Указатель на 1 элемент массива
- * @param size Размер массива  
+ * @brief Удалить из массива все элементы, первая и последняя цифра которых четная.
+* @param arr Указатель на 1 элемент массива
+ * @param size Размер массива
+ * @param new_size Новый размер массива
+ * @return Указатель на новый массив
  */
-void multiply_by_third_element(const int* arr,const size_t size);
+int* remove_even_last(const int* arr, const size_t size, size_t* new_size);
+
+/**
+ * @brief  Сформировать массив по правилу
+* @param arr Указатель на 1 элемент массива
+ * @param size Размер массива
+ * @return Указатель на новый массив
+ */
+int* form_array_based_on_rule(const int* arr, const size_t size);
 
 /**
  * @brief Пытается выделить память
