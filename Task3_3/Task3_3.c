@@ -11,13 +11,13 @@
 long double sum_series(double x, long double eps);
 
 /**
- * @ Функция ввода вещественного числа
+ * @brief Функция ввода вещественного числа
  * @return Вещественное число
  */
 double double_input(void);
 
 /**
- * Точка входа в программу
+ * @brief Точка входа в программу
  * @return 0
  */
 int main()

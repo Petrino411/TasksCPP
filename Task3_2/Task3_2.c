@@ -31,7 +31,7 @@ int int_input(void);
 double double_input(void);
 
 /**
- *@brief Сумма элементов которые больше e
+ * @brief Сумма элементов которые больше e
  * @param e ограничение
  * @return Сумма всех элементов больше e
  */

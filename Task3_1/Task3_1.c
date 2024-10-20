@@ -4,8 +4,8 @@
 
 /**
  * @brief Выводит все значения функции
- * @param bottom_limit нижняя граница
- * @param top_limit верхняя граница 
+ * @param bottom_limit Нижняя граница
+ * @param top_limit Верхняя граница 
  * @param delta шаг
  */
 void printTable(const double bottom_limit, const double top_limit, const double delta);
