@@ -3,68 +3,18 @@
 #include <stdlib.h>
 #include <time.h>
 
-
-int int_input();
-
-/**
- * @brief Вывод массива
- * @param arr Указатель на 1 элемент массива
- * @param size размер массива
- */
-void print_array(int* arr, size_t size);
+#include "array_functions.h"
 
 /**
- * @brief Заполняет массив случайными числами
- * @param arr Указатель на 1 элемент массива
- * @param size размер массива
+ * @brief  Точка входа
+ * @return 0
  */
-void fill_array_random(int* arr, size_t size);
-
-/**
- * @brief Заполняет с клавиатуры массив
- * @param arr Указатель на 1 элемент массива
- * @param size размер массива
- */
-void fill_array_manual(int* arr, size_t size);
-
-/**
- * @brief Cумма элементов, значения которых по модулю меньше 10
- * @param arr Указатель на 1 элемент массива
- * @param size размер массива
- * @return сумма
- */
-int sum_of_elements_less_than_10(const int* arr, size_t size);
-
-/**
- * Индексы тех элементов, значения которых больше значения последующего элемента.
- * @param arr Указатель на 1 элемент массива
- * @param size размер массива
- */
-void print_indices_greater_than_next(const int* arr, size_t size);
-
-/**
- * @brief Умножить все элементы массива, кратные 3, на третий элемент массива
- * @param arr Указатель на 1 элемент массива
- * @param size размер массива  
- */
-void multiply_by_third_element(int* arr, size_t size);
-
-
-typedef enum
-{
-    RANDOM_FILL = 1,
-    MANUAL_FILL = 2
-} FillMethod;
-
-
-int main()
+int main(void)
 {
     setlocale(LC_ALL, "Rus");
-    int arr[100];
-
-
-    puts("Введите количество элементов массива (не более 100)");
-    int size = int_input();
+    puts("Введите количество элементов массива");
+    size_t size = int_input();
+    int* arr = try_allocate_memory(size);
 
     printf("Выберите способ заполнения массива:\n");
     printf("%d. Заполнить случайными числами\n", RANDOM_FILL);
@@ -127,6 +77,8 @@ void print_array(int* arr, size_t size)
 
 void fill_array_random(int* arr, size_t size)
 {
+    int bottom_limit = int_input();
+    int top_limit = int_input();
     srand(time(0));
     for (size_t i = 0; i < size; i++)
     {
@@ -189,4 +141,28 @@ void multiply_by_third_element(int* arr, size_t size)
             arr[i] *= third_element;
         }
     }
+}
+
+int* try_allocate_memory(size_t size)
+{
+    int* array = malloc(size * sizeof(int));
+    if (array == NULL)
+    {
+        abort();
+    }
+    return array;
+}
+
+int* copy_array(int* arr, size_t size)
+{
+    if (copy_array(arr, size) == NULL)
+    {
+        abort();
+    }
+    int* arr_copy = try_allocate_memory(size);
+    for (int i = 0; i < size; i++)
+    {
+        arr_copy[i] = *(arr + i);
+    }
+    return arr_copy;
 }
