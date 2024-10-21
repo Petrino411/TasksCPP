@@ -8,7 +8,7 @@
 int main(void)
 {
     setlocale(LC_ALL, "Rus");
-    
+
     size_t n = int_input("Введите количество строк (n): ");
     size_t m = int_input("Введите количество столбцов (m): ");
 
@@ -36,17 +36,22 @@ int main(void)
     printf("Исходный массив:\n");
     print_2d_array(arr, n, m);
 
-    // 1. Заменить минимальный элемент каждого столбца нулем.
-    replace_min_in_columns_with_zero(arr, n, m);
+    // // 1. Заменить минимальный элемент каждого столбца нулем.
+    int** arr_copy = copy_2d_array(arr, n, m);
+    replace_min_in_columns_with_zero(arr_copy, n, m);
     printf("Массив после замены минимальных элементов каждого столбца на 0:\n");
-    print_2d_array(arr, n, m);
+    print_2d_array(arr_copy, n, m);
 
     // 2. Вставить после каждой строки с максимальным элементом последнюю строку.
-    arr = insert_last_row_after_max(arr, &n, m);
-    printf("Массив после вставки последней строки:\n");
-    print_2d_array(arr, n, m);
+    int** arr_copy2 = copy_2d_array(arr, n, m);
+    printf("Исходный копия:\n");
+    print_2d_array(arr_copy2, n, m);
 
-    // Освобождаем память
+    arr_copy2 = insert_last_row_after_max(arr_copy2, &n, m);
+    printf("Массив после вставки последней строки:\n");
+    print_2d_array(arr_copy2, n, m);
+
+
     free_2d_array(arr, n);
     return 0;
 }
@@ -131,14 +136,14 @@ void replace_min_in_columns_with_zero(int** arr, const size_t n, const size_t m)
                 min_index = i;
             }
         }
-        arr[min_index][j] = 0; // Заменяем минимальный элемент в столбце на 0
+        arr[min_index][j] = 0;
     }
 }
 
 int** insert_last_row_after_max(int** arr, size_t* n, const size_t m)
 {
     int max_element = arr[0][0];
-    
+
     for (size_t i = 0; i < *n; i++)
     {
         for (size_t j = 0; j < m; j++)
@@ -149,8 +154,8 @@ int** insert_last_row_after_max(int** arr, size_t* n, const size_t m)
             }
         }
     }
-    
-    size_t original_n = *n; 
+
+    size_t original_n = *n;
     for (size_t i = 0; i < original_n; i++)
     {
         int contains_max = 0;
@@ -162,33 +167,33 @@ int** insert_last_row_after_max(int** arr, size_t* n, const size_t m)
                 break;
             }
         }
-        
+
         if (contains_max)
         {
-            
             arr = realloc(arr, (*n + 1) * sizeof(int*));
 
-            
+
             arr[*n] = (int*)malloc(m * sizeof(int));
-            
+
+
             for (size_t j = 0; j < m; j++)
             {
                 arr[*n][j] = arr[original_n - 1][j];
             }
-            
+
             for (size_t k = *n; k > i + 1; k--)
             {
                 arr[k] = arr[k - 1];
             }
-            
+
             arr[i + 1] = (int*)malloc(m * sizeof(int));
             for (size_t j = 0; j < m; j++)
             {
                 arr[i + 1][j] = arr[*n][j];
             }
 
-            (*n)++; 
-            i++;   
+            (*n)++;
+            i++;
         }
     }
 
@@ -202,4 +207,17 @@ void free_2d_array(int** arr, const size_t n)
         free(arr[i]);
     }
     free(arr);
+}
+
+int** copy_2d_array(int** arr, const size_t n, const size_t m)
+{
+    int** new_arr = allocate_2d_array(n, m);
+    for (size_t i = 0; i < n; i++)
+    {
+        for (size_t j = 0; j < m; j++)
+        {
+            new_arr[i][j] = arr[i][j];
+        }
+    }
+    return new_arr;
 }

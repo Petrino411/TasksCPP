@@ -70,6 +70,8 @@ void free_2d_array(int** arr, size_t n);
  */
 int int_input(const char* prompt);
 
+int** copy_2d_array(int** arr, const size_t n, const size_t m);
+
 
 
 #endif // AR_H_INCLUDED
