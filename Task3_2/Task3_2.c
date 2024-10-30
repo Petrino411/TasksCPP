@@ -38,6 +38,12 @@ double double_input(void);
 double get_sum_greater_equal_e(const double e);
 
 /**
+ *  @brief  Ввод и проверка вещественного числа на положительность
+ * @return  Вещественное число
+ */
+double get_double(void);
+
+/**
  * @brief Выбор пользователя
  */
 typedef enum
@@ -68,7 +74,7 @@ int main(int argc, char* argv[])
     case TASK_B:
         {
             puts("Введите e");
-            double e = double_input();
+            double e = get_double();
             printf("Cуммa всех членов последовательности, не меньших заданного числа %lf = %lf", e,
                    get_sum_greater_equal_e(e));
             break;
@@ -94,7 +100,6 @@ double get_elements_sum(int n)
     for (int i = 1; i < n; i++)
     {
         sum += get_element(current, i);
-        printf("cur_sum = %lf\n", sum);
     }
     return sum;
 }
@@ -134,12 +139,12 @@ double double_input(void)
     return value;
 }
 
-long double factorial(int n)
+double get_double(void)
 {
-    long double result = 1.0;
-    for (int i = 1; i <= n; ++i)
+    double value = double_input();
+    if(value < 0)
     {
-        result *= i;
+        abort();
     }
-    return result;
+    return value;
 }

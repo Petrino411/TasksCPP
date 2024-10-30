@@ -17,6 +17,12 @@ long double sum_series(double x, long double eps);
 double double_input(void);
 
 /**
+ *  @brief  Ввод и проверка вещественного числа на положительность
+ * @return  Вещественное число
+ */
+double get_double(void);
+
+/**
  * @brief Точка входа в программу
  * @return 0
  */
@@ -26,7 +32,7 @@ int main()
     const double a = double_input();
     const double b = double_input();
     const double h = double_input();
-    const double eps = double_input();
+    const double eps = get_double();
 
     printf(" x\t e^(2x)\t\t S(x)\n");
     printf("-------------------------------\n");
@@ -68,3 +74,14 @@ double double_input(void)
     }
     return value;
 }
+
+double get_double(void)
+{
+    double value = double_input();
+    if(value < 0)
+    {
+        abort();
+    }
+    return value;
+}
+
