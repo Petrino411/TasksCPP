@@ -69,7 +69,7 @@ int int_input(const char* prompt)
     return value;
 }
 
-void print_array(int* arr, const size_t size)
+void print_array(const int* arr, const size_t size)
 {
     for (size_t i = 0; i < size; i++)
     {
@@ -85,7 +85,7 @@ void fill_array_random(int* arr, const size_t size)
     if (top_limit < bottom_limit)
     {
         puts("Верхняя граница не может быть меньше нижней");
-        return;
+        abort();
     }
     srand(time(0));
     for (size_t i = 0; i < size; i++)

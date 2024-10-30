@@ -23,7 +23,7 @@ int int_input(const char* prompt);
  * @param arr Указатель на 1 элемент массива
  * @param size Размер массива
  */
-void print_array(const int* arr, size_t size);
+void print_array(const int* arr, const size_t size);
 
 /**
  * @brief Заполняет массив случайными числами
@@ -66,7 +66,7 @@ void multiply_by_third_element(const int* arr,const size_t size);
  * @param size Размер массива
  * @return Указатель на 1 элемент массива
  */
-int* try_allocate_memory(size_t size);
+int* try_allocate_memory(const size_t size);
 
 /**
  * @brief Копирует массив
