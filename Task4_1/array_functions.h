@@ -19,6 +19,13 @@ typedef enum
 int int_input(const char* prompt);
 
 /**
+ * @brief Функция ввода натурального числа
+ * @param prompt Описание того что нужно ввести
+ * @return Натуральное число
+ */
+int get_positive_int(const char* prompt);
+
+/**
  * @brief Вывод массива
  * @param arr Указатель на 1 элемент массива
  * @param size Размер массива
@@ -74,7 +81,7 @@ int* try_allocate_memory(const size_t size);
  * @param size Размер массива
  * @return Указатель на новый массив
  */
-int* copy_array(const int* arr, size_t size);
+int* copy_array(const int* arr, const size_t size);
 
 
 #endif // AR_H_INCLUDED

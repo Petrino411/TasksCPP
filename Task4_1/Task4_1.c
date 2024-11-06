@@ -12,13 +12,13 @@
 int main(void)
 {
     setlocale(LC_ALL, "Rus");
-    size_t size = int_input("Введите количество элементов массива");
+    const size_t size = get_positive_int("Введите количество элементов массива");
     int* arr = try_allocate_memory(size);
 
     puts("Выберите способ заполнения массива:");
     printf("%d. Заполнить случайными числами\n", RANDOM_FILL);
     printf("%d. Заполнить с клавиатуры\n", MANUAL_FILL);
-    FillMethod fill_method = int_input(NULL);
+    const FillMethod fill_method = int_input(NULL);
 
     switch (fill_method)
     {
@@ -49,7 +49,13 @@ int main(void)
 
     print_indices_greater_than_next(arr, size);
 
-    multiply_by_third_element(arr, size);
+    int *arr_copy = copy_array(arr, size);
+    
+    multiply_by_third_element(arr_copy, size);
+
+    puts("Массив после умножения элементов, кратных 3, на третий элемент");
+    print_array(arr_copy, size);
+    free(arr_copy);
 
     free(arr);
     return 0;
@@ -132,26 +138,23 @@ void print_indices_greater_than_next(const int* arr, const size_t size)
     printf("\n");
 }
 
-void multiply_by_third_element(const int* arr, const size_t size)
+void multiply_by_third_element(int* arr, const size_t size)
 {
     if (size < 3)
     {
         puts("Недостаточно элементов для умножения на третий элемент");
         return;
     }
-    int *arr_copy = copy_array(arr, size);
 
-    int third_element = arr_copy[2];
+    const int third_element = arr[2];
     for (size_t i = 0; i < size; i++)
     {
-        if (arr_copy[i] % 3 == 0)
+        if (arr[i] % 3 == 0)
         {
-            arr_copy[i] *= third_element;
+            arr[i] *= third_element;
         }
     }
-    puts("Массив после умножения элементов, кратных 3, на третий элемент");
-    print_array(arr_copy, size);
-    free(arr_copy);
+    
 }
 
 int* try_allocate_memory(const size_t size)
@@ -172,4 +175,18 @@ int* copy_array(const int* arr, const size_t size)
         arr_copy[i] = arr[i];
     }
     return arr_copy;
+}
+
+int get_positive_int(const char* prompt)
+{
+    int value = 0;
+    if (prompt)
+    {
+        value = int_input(prompt);
+    }
+    if (value < 0)
+    {
+        abort();
+    }
+    return value;
 }
