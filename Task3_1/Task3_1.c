@@ -18,7 +18,7 @@ void print_table(const double bottom_limit, const double top_limit, const double
  * @param x 
  * @return double
  */
-bool get_y(double* y, double x);
+bool get_y(double* y, const double x);
 
 /**
  * @brief Функция ввода вещественного числа
@@ -49,7 +49,7 @@ int main(int argc, char* argv[])
 
 void print_table(const double bottom_limit, const double top_limit, const double delta)
 {
-    for (double i = bottom_limit; i < top_limit; i += delta)
+    for (double i = bottom_limit; i <= top_limit; i += delta)
     {
         double y = 0;
         if(get_y(&y, i))
@@ -67,11 +67,11 @@ void print_table(const double bottom_limit, const double top_limit, const double
 
 bool get_y(double* y, const double x)
 {
-    *y = 0.1 * pow(x, 2) - x * log10(x);
-    if (isnan(*y))
+    if(x <= 0)
     {
         return false;
     }
+    *y = 0.1 * pow(x, 2) - x * log10(x);
     return true;
 }
 

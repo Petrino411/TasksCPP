@@ -6,10 +6,11 @@
 
 /**
  * @brief Элемент последовательности по счету k
+ * @param previous_element - предыдущий элемент
  * @param k - порядковый номер
  * @return Элемент последовательности по счету k
  */
-double get_element(const int k);
+double get_element(double previous_element, int k);
 
 /**
  * @brief Сумма первых n элементов
@@ -93,7 +94,7 @@ double get_element(double previous_element, int k)
     return previous_element * -1 / (4 * pow(k, 2) + 2 * k);
 }
 
-double get_elements_sum(int n)
+double get_elements_sum(const int n)
 {
     double current = -1;
     double sum = current;
@@ -104,7 +105,7 @@ double get_elements_sum(int n)
     return sum;
 }
 
-double get_sum_greater_equal_e(double e)
+double get_sum_greater_equal_e(const double e)
 {
     double current = -1;
     double sum = 0;

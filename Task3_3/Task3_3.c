@@ -8,7 +8,7 @@
  * @param eps погрешность
  * @return Сумма на области определения x 
  */
-long double sum_series(double x, long double eps);
+long double sum_series(const double x,const long double eps);
 
 /**
  * @brief Функция ввода вещественного числа
@@ -26,7 +26,7 @@ double get_double(void);
  * @brief Точка входа в программу
  * @return 0
  */
-int main()
+int main(void)
 {
     puts("Введите a, b, h, eps\n");
     const double a = double_input();
@@ -49,7 +49,7 @@ int main()
     return 0;
 }
 
-long double sum_series(double x, long double eps)
+long double sum_series(const double x, const long double eps)
 {
     long double curr = 1.0;
     long double sum = 0;
