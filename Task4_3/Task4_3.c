@@ -46,7 +46,7 @@ int main(void)
 
     // 2. Вставить после каждой строки с максимальным элементом последнюю строку.
     int** arr_copy2 = copy_2d_array(arr, n, m);
-    
+
     size_t new_n = n;
     arr_copy2 = insert_last_row_after_max(arr_copy2, &new_n, m);
     printf("Массив после вставки последней строки:\n");
@@ -54,7 +54,7 @@ int main(void)
 
 
     free_2d_array(arr_copy2, new_n);
-    
+
     free_2d_array(arr, n);
     return 0;
 }
@@ -131,14 +131,7 @@ void replace_min_in_columns_with_zero(int** arr, const size_t n, const size_t m)
 {
     for (size_t j = 0; j < m; j++)
     {
-        int min_val = arr[0][j];
-        for (size_t i = 1; i < n; i++)
-        {
-            if (arr[i][j] < min_val)
-            {
-                min_val = arr[i][j];
-            }
-        }
+        const int min_val = get_column_min(arr[j], n);
         for (size_t i = 0; i < n; i++)
         {
             if (arr[i][j] == min_val)
@@ -148,6 +141,7 @@ void replace_min_in_columns_with_zero(int** arr, const size_t n, const size_t m)
         }
     }
 }
+
 int** insert_last_row_after_max(int **arr, size_t *n, const size_t m) {
     int max_val = arr[0][0];
     for (size_t i = 0; i < *n; i++) {
@@ -212,4 +206,33 @@ int** copy_2d_array(int** arr, const size_t n, const size_t m)
         }
     }
     return new_arr;
+}
+
+int get_column_min(const int* column, const size_t column_size)
+{
+    int min_val = column[0];
+    for (size_t i = 1; i < column_size; i++)
+    {
+        if (column[i] < min_val)
+        {
+            min_val = column[i];
+        }
+    }
+    return min_val;
+}
+
+int get_2d_array_max(const int** arr, const size_t n, const size_t m)
+{
+    int max_val = arr[0][0];
+    for (size_t i = 1; i < n; i++)
+    {
+        for (size_t j = 0; j < m; j++)
+        {
+            if (arr[i][j] > max_val)
+            {
+                max_val = arr[i][j];
+            }
+        }
+    }
+    return max_val;
 }

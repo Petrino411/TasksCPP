@@ -70,8 +70,31 @@ void free_2d_array(int** arr, size_t n);
  */
 int int_input(const char* prompt);
 
+/**
+ * @brief Скопировать двумерный массив
+ * @param arr Указатель на 1 элемент
+ * @param n Колво строк
+ * @param m Колво столбцов
+ * @return Указатель на новый массив
+ */
 int** copy_2d_array(int** arr, const size_t n, const size_t m);
 
+/**
+ * @brief Найти минимум в колонке
+ * @param column Указатель но колонку
+ * @param column_size Длина колонки
+ * @return Минимальное значение в колонке
+ */
+int get_column_min(const int *column, const size_t column_size);
+
+/**
+ * @brief Максимум в двумерном массиве
+ * @param arr Указатель на 1 элемент
+ * @param n Колво строк
+ * @param m Колво столбцов 
+ * @return Максимальный элемент
+ */
+int get_2d_array_max(const int** arr, const size_t n, const size_t m);
 
 
 #endif // AR_H_INCLUDED
