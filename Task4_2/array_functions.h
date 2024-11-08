@@ -85,6 +85,22 @@ int* copy_array(const int* arr, size_t size);
  */
 int get_first_digit(const int n);
 
+/**
+ * @brief Индекс минимального положительного элемента
+ * @param arr Указатель на 1 элемент массива
+ * @param size Размер массива
+ * @return Индекс минимального положительного элемента
+ */
+size_t find_min_positive_index(const int* arr, const size_t size);
+
+/**
+ * @brief Первый индекс положительного элемента
+ * @param arr Указатель на 1 элемент массива
+ * @param size Размер массива
+ * @return Первый индекс положительного элемента
+ */
+size_t find_first_positive_index(const int* arr, const size_t size);
+
 
 #endif // AR_H_INCLUDED
 

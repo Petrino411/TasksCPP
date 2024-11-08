@@ -43,13 +43,13 @@ int main(void)
 
     puts("Исходный массив:");
     print_array(arr, size);
-    
+
     int* arr_copy1 = copy_array(arr, size);
     replace_min_positive_with_zero(arr_copy1, size);
     puts("Массив после замены минимального положительного элемента на 0:");
     print_array(arr_copy1, size);
     free(arr_copy1);
-    
+
     int* arr_copy2 = copy_array(arr, size);
     size_t new_size = 0;
     int* filtered_array = remove_even_last(arr_copy2, size, &new_size);
@@ -57,7 +57,7 @@ int main(void)
     print_array(filtered_array, new_size);
     free(arr_copy2);
     free(filtered_array);
-    
+
     int* arr_copy3 = copy_array(arr, size);
     int* array_A = form_array_based_on_rule(arr_copy3, size);
     printf("Массив A, сформированный по правилам:\n");
@@ -69,18 +69,40 @@ int main(void)
     return 0;
 }
 
-void replace_min_positive_with_zero(int* arr, const size_t size)
+size_t find_first_positive_index(const int* arr, const size_t size)
 {
-    int min_positive_index = -1;
     for (size_t i = 0; i < size; i++)
     {
-        if (arr[i] > 0 && (min_positive_index == -1 || abs(arr[i]) < abs(arr[min_positive_index])))
+        if (arr[i] > 0)
         {
-            min_positive_index = (int)i;
+            return i;
         }
     }
+    return -1;
+}
 
-    if (min_positive_index != -1)
+size_t find_min_positive_index(const int* arr, const size_t size)
+{
+    size_t min_positive_index = find_first_positive_index(arr, size);
+    if (min_positive_index == (size_t)-1)
+    {
+        return -1;
+    }
+
+    for (size_t i = min_positive_index + 1; i < size; i++)
+    {
+        if (arr[i] > 0 && arr[i] < arr[min_positive_index])
+        {
+            min_positive_index = i;
+        }
+    }
+    return min_positive_index;
+}
+
+void replace_min_positive_with_zero(int* arr, const size_t size)
+{
+    const size_t min_positive_index = find_min_positive_index(arr, size);
+    if (min_positive_index != (size_t)-1)
     {
         arr[min_positive_index] = 0;
     }
@@ -91,30 +113,30 @@ int get_first_digit(const int n)
     int first_digit = abs(n);
     while (first_digit >= 10)
     {
-        first_digit /= 10; 
+        first_digit /= 10;
     }
     return first_digit;
 }
 
 int* remove_even_last(const int* arr, const size_t size, size_t* new_size)
 {
-    int* filtered_arr = try_allocate_memory(size); 
+    int* filtered_arr = try_allocate_memory(size);
     size_t filtered_size = 0;
 
     for (size_t i = 0; i < size; i++)
     {
         int first_digit = get_first_digit(arr[i]);
 
-        const int last_digit = abs(arr[i]) % 10;  
+        const int last_digit = abs(arr[i]) % 10;
 
         if (!(first_digit % 2 == 0 && last_digit % 2 == 0))
         {
-            filtered_arr[filtered_size++] = arr[i];  
+            filtered_arr[filtered_size++] = arr[i];
         }
     }
 
-    *new_size = filtered_size;  
-    return realloc(filtered_arr, filtered_size * sizeof(int));  
+    *new_size = filtered_size;
+    return realloc(filtered_arr, filtered_size * sizeof(int));
 }
 
 int* form_array_based_on_rule(const int* arr, const size_t size)
@@ -125,11 +147,11 @@ int* form_array_based_on_rule(const int* arr, const size_t size)
     {
         if (i >= 2 && i <= 11)
         {
-            array_A[i] = -(arr[i] * arr[i]); 
+            array_A[i] = -(arr[i] * arr[i]);
         }
         else
         {
-            array_A[i] = arr[i] - 1; 
+            array_A[i] = arr[i] - 1;
         }
     }
 
