@@ -51,7 +51,7 @@ int main(void)
     free(arr_copy1);
     
     int* arr_copy2 = copy_array(arr, size);
-    size_t new_size;
+    size_t new_size = 0;
     int* filtered_array = remove_even_last(arr_copy2, size, &new_size);
     puts("Массив после удаления элементов с четной первой и последней цифрой:");
     print_array(filtered_array, new_size);
@@ -86,6 +86,16 @@ void replace_min_positive_with_zero(int* arr, const size_t size)
     }
 }
 
+int get_first_digit(const int n)
+{
+    int first_digit = abs(n);
+    while (first_digit >= 10)
+    {
+        first_digit /= 10; 
+    }
+    return first_digit;
+}
+
 int* remove_even_last(const int* arr, const size_t size, size_t* new_size)
 {
     int* filtered_arr = try_allocate_memory(size); 
@@ -93,13 +103,9 @@ int* remove_even_last(const int* arr, const size_t size, size_t* new_size)
 
     for (size_t i = 0; i < size; i++)
     {
-        int first_digit = abs(arr[i]);
-        while (first_digit >= 10)
-        {
-            first_digit /= 10; 
-        }
+        int first_digit = get_first_digit(arr[i]);
 
-        int last_digit = abs(arr[i]) % 10;  
+        const int last_digit = abs(arr[i]) % 10;  
 
         if (!(first_digit % 2 == 0 && last_digit % 2 == 0))
         {

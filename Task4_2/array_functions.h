@@ -78,6 +78,13 @@ int* try_allocate_memory(size_t size);
  */
 int* copy_array(const int* arr, size_t size);
 
+/**
+ * @brief Функция для нахождения первой цифры числа
+ * @param n Целое число
+ * @return Первая цифра цисла
+ */
+int get_first_digit(const int n);
+
 
 #endif // AR_H_INCLUDED
 
