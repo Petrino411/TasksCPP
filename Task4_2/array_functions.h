@@ -23,7 +23,7 @@ int int_input(const char* prompt);
  * @param arr Указатель на 1 элемент массива
  * @param size Размер массива
  */
-void print_array(const int* arr, size_t size);
+void print_array(const int* arr, const size_t size);
 
 /**
  * @brief Заполняет массив случайными числами
@@ -53,7 +53,7 @@ void replace_min_positive_with_zero(int* arr, const size_t size);
  * @param new_size Новый размер массива
  * @return Указатель на новый массив
  */
-int* remove_even_last(const int* arr, const size_t size, size_t* new_size);
+int* remove_even_last(const int* arr, const size_t size, size_t new_size);
 
 /**
  * @brief  Сформировать массив по правилу
@@ -68,7 +68,7 @@ int* form_array_based_on_rule(const int* arr, const size_t size);
  * @param size Размер массива
  * @return Указатель на 1 элемент массива
  */
-int* try_allocate_memory(size_t size);
+int* try_allocate_memory(const size_t size);
 
 /**
  * @brief Копирует массив
@@ -76,7 +76,7 @@ int* try_allocate_memory(size_t size);
  * @param size Размер массива
  * @return Указатель на новый массив
  */
-int* copy_array(const int* arr, size_t size);
+int* copy_array(const int* arr, const size_t size);
 
 /**
  * @brief Функция для нахождения первой цифры числа
@@ -100,6 +100,14 @@ size_t find_min_positive_index(const int* arr, const size_t size);
  * @return Первый индекс положительного элемента
  */
 size_t find_first_positive_index(const int* arr, const size_t size);
+
+/**
+ * @brief Расчитывает количество элементов кроме тех у которых первая и последняя четная
+ * @param arr Указатель на 1 элемент массива
+ * @param size Размер массива
+ * @return Количество элементов кроме тех у которых первая и последняя четная
+ */
+size_t count_elements_to_save(const int* arr, const size_t size);
 
 
 #endif // AR_H_INCLUDED

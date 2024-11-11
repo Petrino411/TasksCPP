@@ -6,6 +6,9 @@
 #include <time.h>
 
 
+/**
+ * @brief Выбор метода зополнения
+ */
 typedef enum
 {
  RANDOM_FILL = 1, /**< Рандомная генерация */
@@ -18,7 +21,7 @@ typedef enum
  * @param m Колво столбцов
  * @return Указатель на 1 элемент массива
  */
-int** allocate_2d_array(size_t n, size_t m);
+int** allocate_2d_array(const size_t n,const size_t m);
 
 /**
  * @brief Заполняет массив случайными числами
@@ -26,7 +29,7 @@ int** allocate_2d_array(size_t n, size_t m);
  * @param n Колво строк
  * @param m Колво столбцов
  */
-void fill_2d_array_random(int** arr, size_t n, size_t m);
+void fill_2d_array_random(const int** arr, const size_t n, const size_t m);
 
 /**
  * @brief Заполняет с клавиатуры массив
@@ -34,7 +37,7 @@ void fill_2d_array_random(int** arr, size_t n, size_t m);
  * @param n Колво строк
  * @param m Колво столбцов
  */
-void fill_2d_array_manual(int** arr, size_t n, size_t m);
+void fill_2d_array_manual(const int** arr,const size_t n, const size_t m);
 
 /**
  * @brief Выводит массив
@@ -42,7 +45,7 @@ void fill_2d_array_manual(int** arr, size_t n, size_t m);
  * @param n Колво строк
  * @param m Колво столбцов
  */
-void print_2d_array(int** arr, size_t n, size_t m);
+void print_2d_array(int** arr, const size_t n, const size_t m);
 
 /**
  * @brief Заменить минимальный элемент каждого столбца нулем.
@@ -50,7 +53,7 @@ void print_2d_array(int** arr, size_t n, size_t m);
  * @param n Колво строк
  * @param m Колво столбцов
  */
-void replace_min_in_columns_with_zero(int** arr, size_t n, size_t m);
+void replace_min_in_columns_with_zero(int** arr, const size_t n, const size_t m);
 
 /**
  * @brief Вставить после каждой строки, содержащей максимальный по модулю элемент, последнюю строку.
@@ -59,14 +62,14 @@ void replace_min_in_columns_with_zero(int** arr, size_t n, size_t m);
  * @param m Колво столбцов
  * @return Указатель на новый массив
  */
-int** insert_last_row_after_max(int** arr, size_t* n, size_t m);
+int** insert_last_row_after_max(int** arr, const size_t old_n, const size_t new_n, const size_t m);
 
 /**
  * @brief Освобождает 2d массив
  * @param arr Указатель на 1 элемент массива
  * @param n Колво строк
  */
-void free_2d_array(int** arr, size_t n);
+void free_2d_array(int** arr, const size_t n);
 
 /**
  * @brief Функция ввода целого числа
@@ -100,6 +103,15 @@ int get_column_min(const int *column, const size_t column_size);
  * @return Максимальный элемент
  */
 int get_2d_array_max(const int** arr, const size_t n, const size_t m);
+
+/**
+ * @brief Считает количество строк с максимальным элементом и прибавляет к текущему
+ * @param arr Указатель на 1 элемент
+ * @param n Колво строк
+ * @param m Колво столбцов 
+ * @return Новое количество строк
+ */
+size_t get_rows_with_max(const int** arr, const size_t n, const size_t m);
 
 
 #endif // AR_H_INCLUDED

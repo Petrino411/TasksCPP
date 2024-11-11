@@ -25,6 +25,18 @@ int** allocate_2d_array(const size_t n, const size_t m)
     return arr;
 }
 
+
+int** try_allocate_2d_array(const size_t n, const size_t m)
+{
+    int** arr = allocate_2d_array(n, m);
+    if (arr == NULL)
+    {
+        abort();
+    }
+    return arr;
+}
+
+
 void fill_2d_array_random(int** arr, const size_t n, const size_t m)
 {
     const int bottom_limit = int_input("Нижняя граница");
@@ -32,7 +44,7 @@ void fill_2d_array_random(int** arr, const size_t n, const size_t m)
     if (top_limit < bottom_limit)
     {
         puts("Верхняя граница не может быть меньше нижней");
-        return;
+        abort();
     }
     srand(time(0));
     for (size_t i = 0; i < n; i++)
@@ -84,47 +96,55 @@ void replace_min_in_columns_with_zero(int** arr, const size_t n, const size_t m)
     }
 }
 
-int** insert_last_row_after_max(int **arr, size_t *n, const size_t m) {
-    int max_val = arr[0][0];
-    for (size_t i = 0; i < *n; i++) {
-        for (size_t j = 0; j < m; j++) {
-            if (arr[i][j] > max_val) {
-                max_val = arr[i][j];
-            }
-        }
-    }
-    
-    const int *last_row = arr[*n - 1];
-    
-    for (size_t i = 0; i < *n; i++) {
-        int has_max = 0;
-        for (size_t j = 0; j < m; j++) {
-            if (arr[i][j] == max_val) {
-                has_max = 1;
+size_t get_rows_with_max(const int** arr, const size_t n, const size_t m)
+{
+    const int max_val = get_2d_array_max(arr, n, m);
+    size_t rows_with_max = 0;
+    for (size_t i = 0; i < n; i++)
+    {
+        for (size_t j = 0; j < m; j++)
+        {
+            if (arr[i][j] == max_val)
+            {
+                rows_with_max++;
                 break;
             }
         }
-        if (has_max) {
-            (*n)++;
-            arr = realloc(arr, *n * sizeof(int*));
-            if (!arr) {
-                puts("Ошибка при выделении памяти.");
-                abort();
-            }
-            
-            for (size_t k = *n - 1; k > i + 1; k--) {
-                arr[k] = arr[k - 1];
-            }
-            
-            arr[i + 1] = malloc(m * sizeof(int));
-            for (size_t j = 0; j < m; j++) {
-                arr[i + 1][j] = last_row[j];
-            }
+    }
+    return rows_with_max + n;
+}
 
-            i++; 
+int** insert_last_row_after_max(int** arr, const size_t old_n, const size_t new_n, const size_t m)
+{
+    const int max_val = get_2d_array_max(arr, old_n, m);
+
+    printf("%llu\n", new_n);
+
+    int* last_row = arr[old_n - 1];
+    int** new_arr = try_allocate_2d_array(new_n, m);
+
+    size_t curr_new_ind = 0;
+
+    for (size_t i = 0; i < old_n; i++)
+    {
+        for (size_t j = 0; j < m; j++) {
+            new_arr[curr_new_ind][j] = arr[i][j];
+        }
+        curr_new_ind++;
+        
+        for (size_t j = 0; j < m; j++)
+        {
+            if (arr[i][j] == max_val)
+            {
+                for (size_t j = 0; j < m; j++) {
+                    new_arr[curr_new_ind][j] = last_row[j];
+                }
+                curr_new_ind++;
+                break;
+            }
         }
     }
-    return arr;
+    return new_arr;
 }
 
 

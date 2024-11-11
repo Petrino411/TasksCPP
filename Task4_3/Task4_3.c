@@ -45,18 +45,15 @@ int main(void)
     free_2d_array(arr_copy, n);
 
     // 2. Вставить после каждой строки с максимальным элементом последнюю строку.
-    int** arr_copy2 = copy_2d_array(arr, n, m);
 
-    size_t new_n = n;
-    arr_copy2 = insert_last_row_after_max(arr_copy2, &new_n, m);
+    const size_t new_n = get_rows_with_max(arr, n, m);
+    int** new_arr = insert_last_row_after_max(arr, n, new_n, m);
     printf("Массив после вставки последней строки:\n");
-    print_2d_array(arr_copy2, new_n, m);
-
-
-    free_2d_array(arr_copy2, new_n);
-
+    
+    print_2d_array(new_arr, new_n, m);
+    
+    free_2d_array(new_arr, new_n);
+    
     free_2d_array(arr, n);
     return 0;
 }
-
-
