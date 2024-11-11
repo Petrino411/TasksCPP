@@ -1,5 +1,10 @@
 #ifndef AR_H_INCLUDED
 #define AR_H_INCLUDED
+#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
 
 typedef enum
 {

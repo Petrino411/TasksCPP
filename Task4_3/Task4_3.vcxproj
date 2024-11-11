@@ -154,6 +154,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="array_functions.c" />
     <ClCompile Include="Task4_3.c" />
   </ItemGroup>
   <ItemGroup>
