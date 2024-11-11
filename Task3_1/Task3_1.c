@@ -1,7 +1,6 @@
 ﻿#include <corecrt_wctype.h>
 #include <locale.h>
 #include <math.h>
-#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -18,7 +17,7 @@ void print_table(const double bottom_limit, const double top_limit, const double
  * @param x 
  * @return double
  */
-bool get_y(double* y, const double x);
+double get_y(const double x);
 
 /**
  * @brief Функция ввода вещественного числа
@@ -38,7 +37,6 @@ double get_double(void);
  */
 int main(int argc, char* argv[])
 {
-
     setlocale(LC_ALL, "Rus");
     double bottom_limit = double_input();
     double top_limit = double_input();
@@ -51,28 +49,22 @@ void print_table(const double bottom_limit, const double top_limit, const double
 {
     for (double i = bottom_limit; i <= top_limit; i += delta)
     {
-        double y = 0;
-        if(get_y(&y, i))
-        {
-            printf("%.2f: %.2f\n",i, y);
-        }
-        else
+        const double y = get_y(i);
+        if (i <= 0)
         {
             printf("Нет значения в точке %.2f\n", i);
         }
-       
+        else
+        {
+            printf("%.2f: %.2f\n", i, y);
+        }
     }
 }
 
 
-bool get_y(double* y, const double x)
+double get_y(const double x)
 {
-    if(x <= 0)
-    {
-        return false;
-    }
-    *y = 0.1 * pow(x, 2) - x * log10(x);
-    return true;
+    return 0.1 * pow(x, 2) - x * log10(x);
 }
 
 double double_input(void)
@@ -88,10 +80,9 @@ double double_input(void)
 double get_double(void)
 {
     double value = double_input();
-    if(value < 0)
+    if (value < 0)
     {
         abort();
     }
     return value;
 }
-
