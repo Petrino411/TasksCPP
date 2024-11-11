@@ -1,3 +1,4 @@
+#include <float.h>
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
@@ -40,8 +41,8 @@ int main(void)
 
     for (double x = a; x < b+h; x += h)
     {
-        long double func_val = expl(2 * x);
-        long double series_sum = sum_series(x, eps);
+        const long double func_val = expl(2 * x);
+        const long double series_sum = sum_series(x, eps);
 
         printf("%0.1f\t%0.10Lf\t%0.10Lf\n", x, func_val, series_sum);
     }
@@ -55,7 +56,7 @@ long double sum_series(const double x, const long double eps)
     long double sum = 0;
     int n = 1;
 
-    while (fabsl(curr) >= eps)
+    while (fabsl(curr) >= eps - DBL_EPSILON)
     {
         sum += curr;
         curr *= 2 * x / n;

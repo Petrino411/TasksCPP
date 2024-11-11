@@ -1,4 +1,5 @@
 ﻿#include <corecrt_wctype.h>
+#include <float.h>
 #include <locale.h>
 #include <math.h>
 #include <stdio.h>
@@ -38,8 +39,11 @@ double get_double(void);
 int main(int argc, char* argv[])
 {
     setlocale(LC_ALL, "Rus");
+    puts("Нижняя граница");
     double bottom_limit = double_input();
+    puts("Верхняя граница");
     double top_limit = double_input();
+    puts("Шаг");
     double delta = get_double();
     print_table(bottom_limit, top_limit, delta);
     return 0;
@@ -49,13 +53,13 @@ void print_table(const double bottom_limit, const double top_limit, const double
 {
     for (double i = bottom_limit; i <= top_limit; i += delta)
     {
-        const double y = get_y(i);
-        if (i <= 0)
+        if (i <= -DBL_EPSILON)
         {
             printf("Нет значения в точке %.2f\n", i);
         }
         else
         {
+            const double y = get_y(i);
             printf("%.2f: %.2f\n", i, y);
         }
     }
