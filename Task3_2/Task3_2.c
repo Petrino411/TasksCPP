@@ -42,7 +42,7 @@ double get_sum_greater_equal_e(const double e);
  *  @brief  Ввод и проверка вещественного числа на положительность
  * @return  Вещественное число
  */
-double get_double(void);
+double get_positive_double(void);
 
 /**
  * @brief Выбор пользователя
@@ -55,7 +55,7 @@ typedef enum
 
 /**
  *@brief Точка входа
- * @return 0
+ * @return 0 в случае успеха
  */
 int main(int argc, char* argv[])
 {
@@ -75,7 +75,7 @@ int main(int argc, char* argv[])
     case TASK_B:
         {
             puts("Введите e");
-            double e = get_double();
+            double e = get_positive_double();
             printf("Cуммa всех членов последовательности, не меньших заданного числа %lf = %lf", e,
                    get_sum_greater_equal_e(e));
             break;
@@ -83,7 +83,7 @@ int main(int argc, char* argv[])
     default:
         {
             puts("Неверный ввод");
-            abort();
+            _exit(1); 
         }
     }
     return 0;
@@ -110,7 +110,7 @@ double get_sum_greater_equal_e(const double e)
     double current = -1;
     double sum = 0;
     int k = 1;
-    while (fabs(current) >= e + DBL_EPSILON)
+    while (fabs(current) >= e - DBL_EPSILON)
     {
         sum += current;
         current = get_element(current, k);
@@ -140,7 +140,7 @@ double double_input(void)
     return value;
 }
 
-double get_double(void)
+double get_positive_double(void)
 {
     double value = double_input();
     if(value < 0)

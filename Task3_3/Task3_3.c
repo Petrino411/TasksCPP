@@ -21,7 +21,7 @@ double double_input(void);
  *  @brief  Ввод и проверка вещественного числа на положительность
  * @return  Вещественное число
  */
-double get_double(void);
+double get_positive_double(void);
 
 /**
  * @brief Точка входа в программу
@@ -33,7 +33,7 @@ int main(void)
     const double a = double_input();
     const double b = double_input();
     const double h = double_input();
-    const double eps = get_double();
+    const double eps = get_positive_double();
 
     printf(" x\t e^(2x)\t\t S(x)\n");
     printf("-------------------------------\n");
@@ -76,7 +76,7 @@ double double_input(void)
     return value;
 }
 
-double get_double(void)
+double get_positive_double(void)
 {
     double value = double_input();
     if(value < 0)

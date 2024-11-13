@@ -30,7 +30,7 @@ double double_input(void);
  *  @brief  Ввод и проверка вещественного числа на положительность
  * @return  Вещественное число
  */
-double get_double(void);
+double get_positive_double(void);
 
 /**
  * @brief Точка входа в программу
@@ -44,16 +44,16 @@ int main(int argc, char* argv[])
     puts("Верхняя граница");
     double top_limit = double_input();
     puts("Шаг");
-    double delta = get_double();
+    const double delta = get_positive_double();
     print_table(bottom_limit, top_limit, delta);
     return 0;
 }
 
 void print_table(const double bottom_limit, const double top_limit, const double delta)
 {
-    for (double i = bottom_limit; i <= top_limit; i += delta)
+    for (double i = bottom_limit; i  <= top_limit + DBL_EPSILON; i += delta - DBL_EPSILON)
     {
-        if (i <= -DBL_EPSILON)
+        if (i <= DBL_EPSILON)
         {
             printf("Нет значения в точке %.2f\n", i);
         }
@@ -81,10 +81,10 @@ double double_input(void)
     return value;
 }
 
-double get_double(void)
+double get_positive_double(void)
 {
-    double value = double_input();
-    if (value < 0)
+    const double value = double_input();
+    if (value < DBL_EPSILON)
     {
         abort();
     }
