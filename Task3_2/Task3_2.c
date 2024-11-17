@@ -10,7 +10,7 @@
  * @param k - порядковый номер
  * @return Элемент последовательности по счету k
  */
-double get_element(double previous_element, int k);
+double get_element(const double previous_element, const int k);
 
 /**
  * @brief Сумма первых n элементов
@@ -27,7 +27,7 @@ int int_input(void);
 
 /**
  * @brief Функция ввода вещественного числа
- * @return double
+ * @return Вещественное число
  */
 double double_input(void);
 
@@ -83,13 +83,13 @@ int main(int argc, char* argv[])
     default:
         {
             puts("Неверный ввод");
-            _exit(1); 
+            _exit(1);
         }
     }
     return 0;
 }
 
-double get_element(double previous_element, int k)
+double get_element(const double previous_element, const int k)
 {
     return previous_element * -1 / (4 * pow(k, 2) + 2 * k);
 }
@@ -143,7 +143,7 @@ double double_input(void)
 double get_positive_double(void)
 {
     double value = double_input();
-    if(value < 0)
+    if (value < 0)
     {
         abort();
     }

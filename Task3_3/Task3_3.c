@@ -9,7 +9,7 @@
  * @param eps погрешность
  * @return Сумма на области определения x 
  */
-long double sum_series(const double x,const long double eps);
+long double sum_series(const double x, const long double eps);
 
 /**
  * @brief Функция ввода вещественного числа
@@ -25,7 +25,7 @@ double get_positive_double(void);
 
 /**
  * @brief Точка входа в программу
- * @return 0
+ * @return 0 в случае успеха
  */
 int main(void)
 {
@@ -38,15 +38,13 @@ int main(void)
     printf(" x\t e^(2x)\t\t S(x)\n");
     printf("-------------------------------\n");
 
-
-    for (double x = a; x < b+h; x += h)
+    for (double x = a; x < b + h; x += h)
     {
         const long double func_val = expl(2 * x);
         const long double series_sum = sum_series(x, eps);
 
         printf("%0.1f\t%0.10Lf\t%0.10Lf\n", x, func_val, series_sum);
     }
-
     return 0;
 }
 
@@ -79,10 +77,9 @@ double double_input(void)
 double get_positive_double(void)
 {
     double value = double_input();
-    if(value < 0)
+    if (value < 0)
     {
         abort();
     }
     return value;
 }
-

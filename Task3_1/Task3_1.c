@@ -16,13 +16,13 @@ void print_table(const double bottom_limit, const double top_limit, const double
 /**
  * @brief Расчитывает значение функции в точке x
  * @param x 
- * @return double
+ * @return значение функции в точке x
  */
 double get_y(const double x);
 
 /**
  * @brief Функция ввода вещественного числа
- * @return double
+ * @return вещественное число
  */
 double double_input(void);
 
