@@ -83,7 +83,7 @@ int main(int argc, char* argv[])
     default:
         {
             puts("Неверный ввод");
-            _exit(1);
+            return 1;
         }
     }
     return 0;
