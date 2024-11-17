@@ -1,4 +1,5 @@
-#include "array_functions.h"
+﻿#include "array_functions.h"
+
 
 
 int int_input(const char* prompt)
@@ -117,10 +118,8 @@ size_t get_rows_with_max(const int** arr, const size_t n, const size_t m)
 int** insert_last_row_after_max(int** arr, const size_t old_n, const size_t new_n, const size_t m)
 {
     const int max_val = get_2d_array_max(arr, old_n, m);
-
-    printf("%llu\n", new_n);
-
-    int* last_row = arr[old_n - 1];
+    
+    const int* last_row = arr[old_n - 1];
     int** new_arr = try_allocate_2d_array(new_n, m);
 
     size_t curr_new_ind = 0;

@@ -1,9 +1,11 @@
-#ifndef AR_H_INCLUDED
+﻿#ifndef AR_H_INCLUDED
 #define AR_H_INCLUDED
-#include <stddef.h>
+#include <locale.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdlib.h>
 #include <time.h>
+
 
 
 /**

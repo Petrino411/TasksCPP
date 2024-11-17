@@ -12,13 +12,13 @@
 int main(void)
 {
     setlocale(LC_ALL, "Rus");
-    size_t size = int_input("Введите количество элементов массива");
+    const size_t size = int_input("Введите количество элементов массива");
     int* arr = try_allocate_memory(size);
 
     puts("Выберите способ заполнения массива:");
     printf("%d. Заполнить случайными числами\n", RANDOM_FILL);
     printf("%d. Заполнить с клавиатуры\n", MANUAL_FILL);
-    FillMethod fill_method = int_input(NULL);
+    const FillMethod fill_method = int_input(NULL);
 
     switch (fill_method)
     {
@@ -50,7 +50,7 @@ int main(void)
     print_array(arr_copy1, size);
     free(arr_copy1);
 
-    size_t new_size = count_elements_to_save(arr, size);
+    const size_t new_size = count_elements_to_save(arr, size);
     int* filtered_array = remove_even_last(arr, size, new_size);
     puts("Массив после удаления элементов с четной первой и последней цифрой:");
     print_array(filtered_array, new_size);
@@ -58,11 +58,11 @@ int main(void)
     free(filtered_array);
 
     int* arr_copy2 = copy_array(arr, size);
-    int* array_A = form_array_based_on_rule(arr_copy2, size);
+    int* array_a = form_array_based_on_rule(arr_copy2, size);
     printf("Массив A, сформированный по правилам:\n");
-    print_array(array_A, size);
+    print_array(array_a, size);
     free(arr_copy2);
-    free(array_A);
+    free(array_a);
 
     free(arr);
     return 0;
