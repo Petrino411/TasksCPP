@@ -53,7 +53,7 @@ void replace_min_positive_with_zero(int* arr, const size_t size);
  * @param new_size Новый размер массива
  * @return Указатель на новый массив
  */
-int* remove_even_last(const int* arr, const size_t size, size_t new_size);
+int* remove_even_last(const int* arr, const size_t size, const size_t new_size);
 
 /**
  * @brief  Сформировать массив по правилу

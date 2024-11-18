@@ -135,7 +135,7 @@ size_t count_elements_to_save(const int* arr, const size_t size)
     return count_to_save;
 }
 
-int* remove_even_last(const int* arr, const size_t size, size_t new_size)
+int* remove_even_last(const int* arr, const size_t size, const size_t new_size)
 {
     int* filtered_arr = try_allocate_memory(new_size);
     size_t filtered_size = 0;
