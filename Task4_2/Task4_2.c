@@ -56,12 +56,11 @@ int main(void)
     print_array(filtered_array, new_size);
 
     free(filtered_array);
-
-    int* arr_copy2 = copy_array(arr, size);
-    int* array_a = form_array_based_on_rule(arr_copy2, size);
+    
+    int* array_a = form_array_based_on_rule(arr, size);
     printf("Массив A, сформированный по правилам:\n");
     print_array(array_a, size);
-    free(arr_copy2);
+    free(arr);
     free(array_a);
 
     free(arr);
@@ -96,16 +95,14 @@ size_t find_min_positive_index(const int* arr, const size_t size)
             min_positive_index = i;
         }
     }
-    return size+1;
+    return min_positive_index;
 }
 
 void replace_min_positive_with_zero(int* arr, const size_t size)
 {
     const size_t min_positive_index = find_min_positive_index(arr, size);
-    if (min_positive_index != size +1)
-    {
-        arr[min_positive_index] = 0;
-    }
+    arr[min_positive_index] = 0;
+    
 }
 
 int get_first_digit(const int n)
@@ -203,7 +200,7 @@ void fill_array_random(int* arr, const size_t size)
     if (top_limit < bottom_limit)
     {
         puts("Верхняя граница не может быть меньше нижней");
-        return;
+        abort();
     }
     srand(time(0));
     for (size_t i = 0; i < size; i++)

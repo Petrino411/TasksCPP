@@ -31,7 +31,7 @@ int** allocate_2d_array(const size_t n,const size_t m);
  * @param n Колво строк
  * @param m Колво столбцов
  */
-void fill_2d_array_random(const int** arr, const size_t n, const size_t m);
+void fill_2d_array_random(int** arr, const size_t n, const size_t m);
 
 /**
  * @brief Заполняет с клавиатуры массив
@@ -39,7 +39,7 @@ void fill_2d_array_random(const int** arr, const size_t n, const size_t m);
  * @param n Колво строк
  * @param m Колво столбцов
  */
-void fill_2d_array_manual(const int** arr,const size_t n, const size_t m);
+void fill_2d_array_manual(int** arr,const size_t n, const size_t m);
 
 /**
  * @brief Выводит массив
@@ -47,7 +47,7 @@ void fill_2d_array_manual(const int** arr,const size_t n, const size_t m);
  * @param n Колво строк
  * @param m Колво столбцов
  */
-void print_2d_array(int** arr, const size_t n, const size_t m);
+void print_2d_array(const int** arr, const size_t n, const size_t m);
 
 /**
  * @brief Заменить минимальный элемент каждого столбца нулем.
@@ -87,7 +87,7 @@ int int_input(const char* prompt);
  * @param m Колво столбцов
  * @return Указатель на новый массив
  */
-int** copy_2d_array(int** arr, const size_t n, const size_t m);
+int** copy_2d_array(const int** arr, const size_t n, const size_t m);
 
 /**
  * @brief Найти минимум в колонке

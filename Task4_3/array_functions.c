@@ -156,7 +156,7 @@ void free_2d_array(int** arr, const size_t n)
     free(arr);
 }
 
-int** copy_2d_array(int** arr, const size_t n, const size_t m)
+int** copy_2d_array(const int** arr, const size_t n, const size_t m)
 {
     int** new_arr = allocate_2d_array(n, m);
     for (size_t i = 0; i < n; i++)

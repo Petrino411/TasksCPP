@@ -4,8 +4,8 @@ int main(void)
 {
     setlocale(LC_ALL, "Rus");
 
-    const size_t n = int_input("Введите количество строк (n): ");
-    const size_t m = int_input("Введите количество столбцов (m): ");
+    const size_t n = (size_t)int_input("Введите количество строк (n): ");
+    const size_t m = (size_t)int_input("Введите количество столбцов (m): ");
 
     int** arr = allocate_2d_array(n, m);
 
