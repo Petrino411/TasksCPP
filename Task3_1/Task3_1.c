@@ -51,7 +51,7 @@ int main(int argc, char* argv[])
 
 void print_table(const double bottom_limit, const double top_limit, const double delta)
 {
-    for (double i = bottom_limit; i  <= top_limit + DBL_EPSILON; i += delta - DBL_EPSILON)
+    for (double i = bottom_limit; i  <= top_limit + DBL_EPSILON; i += delta)
     {
         if (i <= DBL_EPSILON)
         {

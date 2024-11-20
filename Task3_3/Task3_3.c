@@ -30,9 +30,9 @@ double get_positive_double(void);
 int main(void)
 {
     puts("Введите a, b, h, eps\n");
-    const double a = double_input();
-    const double b = double_input();
-    const double h = double_input();
+    const double a = get_positive_double();
+    const double b = get_positive_double();
+    const double h = get_positive_double();
     const double eps = get_positive_double();
 
     printf(" x\t e^(2x)\t\t S(x)\n");

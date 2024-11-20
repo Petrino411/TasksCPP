@@ -45,6 +45,12 @@ double get_sum_greater_equal_e(const double e);
 double get_positive_double(void);
 
 /**
+ * @brief Ввод натурального числа
+ * @return Натуральное число
+ */
+int get_natural_int(void);
+
+/**
  * @brief Выбор пользователя
  */
 typedef enum
@@ -67,7 +73,7 @@ int main(int argc, char* argv[])
     case TASK_A:
         {
             puts("Введите n");
-            int n = int_input();
+            int n = get_natural_int();
             double sum = get_elements_sum(n);
             printf("Сумма первых %d элементов последовательности = %lf", n, sum);
             break;
@@ -119,6 +125,16 @@ double get_sum_greater_equal_e(const double e)
     return sum;
 }
 
+
+int get_natural_int(void)
+{
+    const int value = int_input();
+    if (value < 1)
+    {
+        abort();
+    }
+    return value;
+}
 
 int int_input(void)
 {
