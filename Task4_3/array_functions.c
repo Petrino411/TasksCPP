@@ -22,6 +22,10 @@ int** allocate_2d_array(const size_t n, const size_t m)
     for (size_t i = 0; i < n; i++)
     {
         arr[i] = (int*)malloc(m * sizeof(int));
+        if (arr[i] == NULL)
+        {
+            abort();
+        }
     }
     return arr;
 }
@@ -158,7 +162,7 @@ void free_2d_array(int** arr, const size_t n)
 
 int** copy_2d_array(const int** arr, const size_t n, const size_t m)
 {
-    int** new_arr = allocate_2d_array(n, m);
+    int** new_arr = try_allocate_2d_array(n, m);
     for (size_t i = 0; i < n; i++)
     {
         for (size_t j = 0; j < m; j++)
@@ -185,7 +189,7 @@ int get_column_min(const int* column, const size_t column_size)
 int get_2d_array_max(const int** arr, const size_t n, const size_t m)
 {
     int max_val = arr[0][0];
-    for (size_t i = 1; i < n; i++)
+    for (size_t i = 0; i < n; i++)
     {
         for (size_t j = 0; j < m; j++)
         {

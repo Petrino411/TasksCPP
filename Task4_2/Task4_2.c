@@ -62,8 +62,6 @@ int main(void)
     print_array(array_a, size);
     free(arr);
     free(array_a);
-
-    free(arr);
     return 0;
 }
 

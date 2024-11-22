@@ -18,12 +18,20 @@ typedef enum
 } FillMethod;
 
 /**
- * @brief Пытается выделить память
+ * @brief Выделяет память
  * @param n Колво строк
  * @param m Колво столбцов
  * @return Указатель на 1 элемент массива
  */
 int** allocate_2d_array(const size_t n,const size_t m);
+
+/**
+ * @brief Пытается выделить память
+ * @param n Колво строк
+ * @param m Колво столбцов
+ * @return Указатель на 1 элемент массива
+ */
+int** try_allocate_2d_array(const size_t n, const size_t m);
 
 /**
  * @brief Заполняет массив случайными числами

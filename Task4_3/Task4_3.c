@@ -7,7 +7,7 @@ int main(void)
     const size_t n = (size_t)int_input("Введите количество строк (n): ");
     const size_t m = (size_t)int_input("Введите количество столбцов (m): ");
 
-    int** arr = allocate_2d_array(n, m);
+    int** arr = try_allocate_2d_array(n, m);
 
     puts("Выберите способ заполнения массива:");
     printf("%d. Заполнить случайными числами\n", RANDOM_FILL);
