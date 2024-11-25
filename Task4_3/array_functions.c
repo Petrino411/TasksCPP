@@ -34,16 +34,13 @@ int** allocate_2d_array(const size_t n, const size_t m)
 int** try_allocate_2d_array(const size_t n, const size_t m)
 {
     int** arr = allocate_2d_array(n, m);
-    if (arr == NULL)
-    {
-        abort();
-    }
-    return arr;
+    return array_is_not_null(arr);
 }
 
 
 void fill_2d_array_random(int** arr, const size_t n, const size_t m)
 {
+    arr = array_is_not_null(arr);
     const int bottom_limit = int_input("Нижняя граница");
     const int top_limit = int_input("Верхняя граница");
     if (top_limit < bottom_limit)
@@ -63,6 +60,7 @@ void fill_2d_array_random(int** arr, const size_t n, const size_t m)
 
 void fill_2d_array_manual(int** arr, const size_t n, const size_t m)
 {
+    arr = array_is_not_null(arr);
     printf("Введите элементы массива размером %llu x %llu:\n", n, m);
     for (size_t i = 0; i < n; i++)
     {
@@ -74,8 +72,9 @@ void fill_2d_array_manual(int** arr, const size_t n, const size_t m)
     }
 }
 
-void print_2d_array(int** arr, const size_t n, const size_t m)
+void print_2d_array(const int** arr, const size_t n, const size_t m)
 {
+    arr = array_is_not_null(arr);
     for (size_t i = 0; i < n; i++)
     {
         for (size_t j = 0; j < m; j++)
@@ -88,9 +87,10 @@ void print_2d_array(int** arr, const size_t n, const size_t m)
 
 void replace_min_in_columns_with_zero(int** arr, const size_t n, const size_t m)
 {
+    arr = array_is_not_null(arr);
     for (size_t j = 0; j < m; j++)
     {
-        const int min_val = get_column_min(arr[j], n);
+        int min_val = get_column_min(arr, n, j);
         for (size_t i = 0; i < n; i++)
         {
             if (arr[i][j] == min_val)
@@ -103,6 +103,7 @@ void replace_min_in_columns_with_zero(int** arr, const size_t n, const size_t m)
 
 size_t get_rows_with_max(const int** arr, const size_t n, const size_t m)
 {
+    arr = array_is_not_null(arr);
     const int max_val = get_2d_array_max(arr, n, m);
     size_t rows_with_max = 0;
     for (size_t i = 0; i < n; i++)
@@ -121,6 +122,7 @@ size_t get_rows_with_max(const int** arr, const size_t n, const size_t m)
 
 int** insert_last_row_after_max(int** arr, const size_t old_n, const size_t new_n, const size_t m)
 {
+    arr = array_is_not_null(arr);
     const int max_val = get_2d_array_max(arr, old_n, m);
     
     const int* last_row = arr[old_n - 1];
@@ -162,6 +164,7 @@ void free_2d_array(int** arr, const size_t n)
 
 int** copy_2d_array(const int** arr, const size_t n, const size_t m)
 {
+    arr = array_is_not_null(arr);
     int** new_arr = try_allocate_2d_array(n, m);
     for (size_t i = 0; i < n; i++)
     {
@@ -173,14 +176,15 @@ int** copy_2d_array(const int** arr, const size_t n, const size_t m)
     return new_arr;
 }
 
-int get_column_min(const int* column, const size_t column_size)
+int get_column_min(const int** arr, const size_t n, const size_t column_index)
 {
-    int min_val = column[0];
-    for (size_t i = 1; i < column_size; i++)
+    arr = array_is_not_null(arr);
+    int min_val = arr[0][column_index];
+    for (size_t i = 1; i < n; i++)
     {
-        if (column[i] < min_val)
+        if (arr[i][column_index] < min_val)
         {
-            min_val = column[i];
+            min_val = arr[i][column_index];
         }
     }
     return min_val;
@@ -188,6 +192,7 @@ int get_column_min(const int* column, const size_t column_size)
 
 int get_2d_array_max(const int** arr, const size_t n, const size_t m)
 {
+    arr = array_is_not_null(arr);
     int max_val = arr[0][0];
     for (size_t i = 0; i < n; i++)
     {
@@ -201,3 +206,13 @@ int get_2d_array_max(const int** arr, const size_t n, const size_t m)
     }
     return max_val;
 }
+
+const int** array_is_not_null(const int** arr)
+{
+    if (arr == NULL)
+    {
+        abort();
+    }
+    return arr;
+} 
+

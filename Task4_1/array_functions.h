@@ -83,6 +83,13 @@ int* try_allocate_memory(const size_t size);
  */
 int* copy_array(const int* arr, const size_t size);
 
+/**
+ * @brief Проверка массива на NULL
+ * @param arr Указатель на 1 элемент массива
+ * @return Переданный массив, если он не NULL
+ */
+const int* array_is_not_null(const int* arr);
+
 
 #endif // AR_H_INCLUDED
 

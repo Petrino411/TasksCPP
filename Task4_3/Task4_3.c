@@ -35,7 +35,6 @@ int main(void)
     int** arr_copy = copy_2d_array(arr, n, m);
     replace_min_in_columns_with_zero(arr_copy, n, m);
     printf("Массив после замены минимальных элементов каждого столбца на 0:\n");
-    
     print_2d_array(arr_copy, n, m);
     free_2d_array(arr_copy, n);
 

@@ -77,6 +77,7 @@ int int_input(const char* prompt)
 
 void print_array(const int* arr, const size_t size)
 {
+    arr = array_is_not_null(arr);
     for (size_t i = 0; i < size; i++)
     {
         printf("%d ", arr[i]);
@@ -86,6 +87,7 @@ void print_array(const int* arr, const size_t size)
 
 void fill_array_random(int* arr, const size_t size)
 {
+    arr = array_is_not_null(arr);
     const int bottom_limit = int_input("Нижняя граница");
     const int top_limit = int_input("Верхняя граница");
     if (top_limit < bottom_limit)
@@ -103,6 +105,7 @@ void fill_array_random(int* arr, const size_t size)
 
 void fill_array_manual(int* arr, const size_t size)
 {
+    arr = array_is_not_null(arr);
     printf("Введите %llu целых чисел:\n", size);
     for (size_t i = 0; i < size; i++)
     {
@@ -113,6 +116,7 @@ void fill_array_manual(int* arr, const size_t size)
 
 int sum_of_elements_less_than_10(const int* arr, const size_t size)
 {
+    arr = array_is_not_null(arr);
     int sum = 0;
     for (size_t i = 0; i < size; i++)
     {
@@ -127,6 +131,7 @@ int sum_of_elements_less_than_10(const int* arr, const size_t size)
 
 void print_indices_greater_than_next(const int* arr, const size_t size)
 {
+    arr = array_is_not_null(arr);
     puts("Индексы элементов, которые больше следующего");
     for (size_t i = 0; i < size - 1; i++)
     {
@@ -140,6 +145,7 @@ void print_indices_greater_than_next(const int* arr, const size_t size)
 
 void multiply_by_third_element(int* arr, const size_t size)
 {
+    arr = array_is_not_null(arr);
     if (size < 3)
     {
         puts("Недостаточно элементов для умножения на третий элемент");
@@ -160,15 +166,12 @@ void multiply_by_third_element(int* arr, const size_t size)
 int* try_allocate_memory(const size_t size)
 {
     int* array = malloc(size * sizeof(int));
-    if (array == NULL)
-    {
-        abort();
-    }
-    return array;
+    return array_is_not_null(array);
 }
 
 int* copy_array(const int* arr, const size_t size)
 {
+    arr = array_is_not_null(arr);
     int* arr_copy = try_allocate_memory(size);
     for (size_t i = 0; i < size; i++)
     {
@@ -190,3 +193,12 @@ int get_positive_int(const char* prompt)
     }
     return value;
 }
+
+const int* array_is_not_null(const int* arr)
+{
+    if (arr == NULL)
+    {
+        abort();
+    }
+    return arr;
+} 

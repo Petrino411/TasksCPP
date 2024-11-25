@@ -98,12 +98,13 @@ int int_input(const char* prompt);
 int** copy_2d_array(const int** arr, const size_t n, const size_t m);
 
 /**
- * @brief Найти минимум в колонке
- * @param column Указатель но колонку
- * @param column_size Длина колонки
- * @return Минимальное значение в колонке
+ * @brief Минимальное значение в колонке column_index
+* @param arr Указатель на 1 элемент
+ * @param n строки
+ * @param column_index индекс колонки
+ * @return Минимальный элемент в колонке column_index
  */
-int get_column_min(const int *column, const size_t column_size);
+int get_column_min(const int** arr, const size_t n, const size_t column_index);
 
 /**
  * @brief Максимум в двумерном массиве
@@ -122,6 +123,13 @@ int get_2d_array_max(const int** arr, const size_t n, const size_t m);
  * @return Новое количество строк
  */
 size_t get_rows_with_max(const int** arr, const size_t n, const size_t m);
+
+/**
+ * @brief Проверка массива на NULL
+ * @param arr Указатель на 1 элемент массива
+ * @return Переданный массив, если он не NULL
+ */
+const int** array_is_not_null(const int** arr);
 
 
 #endif // AR_H_INCLUDED

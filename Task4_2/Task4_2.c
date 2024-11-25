@@ -6,7 +6,7 @@
 #include "array_functions.h"
 
 /**
- * @brief  Точка входа
+ * @brief Точка входа
  * @return 0
  */
 int main(void)
@@ -98,6 +98,7 @@ size_t find_min_positive_index(const int* arr, const size_t size)
 
 void replace_min_positive_with_zero(int* arr, const size_t size)
 {
+    arr = array_is_not_null(arr);
     const size_t min_positive_index = find_min_positive_index(arr, size);
     arr[min_positive_index] = 0;
     
@@ -115,6 +116,7 @@ int get_first_digit(const int n)
 
 size_t count_elements_to_save(const int* arr, const size_t size)
 {
+    arr = array_is_not_null(arr);
     size_t count_to_save = 0;
     for (size_t i = 0; i < size; i++)
     {
@@ -132,6 +134,7 @@ size_t count_elements_to_save(const int* arr, const size_t size)
 
 int* remove_even_last(const int* arr, const size_t size, const size_t new_size)
 {
+    arr = array_is_not_null(arr);
     int* filtered_arr = try_allocate_memory(new_size);
     size_t filtered_size = 0;
 
@@ -151,6 +154,7 @@ int* remove_even_last(const int* arr, const size_t size, const size_t new_size)
 
 int* form_array_based_on_rule(const int* arr, const size_t size)
 {
+    arr = array_is_not_null(arr);
     int* array_A = try_allocate_memory(size);
 
     for (size_t i = 0; i < size; i++)
@@ -184,6 +188,7 @@ int int_input(const char* prompt)
 
 void print_array(int* arr, const size_t size)
 {
+    arr = array_is_not_null(arr);   
     for (size_t i = 0; i < size; i++)
     {
         printf("%d ", arr[i]);
@@ -193,6 +198,7 @@ void print_array(int* arr, const size_t size)
 
 void fill_array_random(int* arr, const size_t size)
 {
+    arr = array_is_not_null(arr);
     const int bottom_limit = int_input("Нижняя граница");
     const int top_limit = int_input("Верхняя граница");
     if (top_limit < bottom_limit)
@@ -210,6 +216,7 @@ void fill_array_random(int* arr, const size_t size)
 
 void fill_array_manual(int* arr, const size_t size)
 {
+    arr = array_is_not_null(arr);
     printf("Введите %llu целых чисел:\n", size);
     for (size_t i = 0; i < size; i++)
     {
@@ -221,15 +228,12 @@ void fill_array_manual(int* arr, const size_t size)
 int* try_allocate_memory(const size_t size)
 {
     int* array = malloc(size * sizeof(int));
-    if (array == NULL)
-    {
-        abort();
-    }
-    return array;
+    return array_is_not_null(array);
 }
 
 int* copy_array(const int* arr, const size_t size)
 {
+    arr = array_is_not_null(arr);
     int* arr_copy = try_allocate_memory(size);
     for (size_t i = 0; i < size; i++)
     {
@@ -237,3 +241,12 @@ int* copy_array(const int* arr, const size_t size)
     }
     return arr_copy;
 }
+
+const int* array_is_not_null(const int* arr)
+{
+    if (arr == NULL)
+    {
+        abort();
+    }
+    return arr;
+} 

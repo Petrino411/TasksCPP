@@ -109,6 +109,13 @@ size_t find_first_positive_index(const int* arr, const size_t size);
  */
 size_t count_elements_to_save(const int* arr, const size_t size);
 
+/**
+ * @brief Проверка массива на NULL
+ * @param arr Указатель на 1 элемент массива
+ * @return Переданный массив, если он не NULL
+ */
+const int* array_is_not_null(const int* arr);
+
 
 #endif // AR_H_INCLUDED
 
