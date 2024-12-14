@@ -94,7 +94,7 @@ int main(int argc, char* argv[])
     return 0;
 }
 
-int get_choice(void)
+int get_user_choice(void)
 {
     UserChoice choice = EXIT;
     printf("Введите %d (Объем) или %d (Площадь поверхности) или %d (Выход):", VOLUME, SURFACE_AREA, EXIT);
