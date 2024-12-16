@@ -1,4 +1,5 @@
-#include <float.h>
+﻿#include <float.h>
+#include <locale.h>
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
@@ -29,6 +30,7 @@ double get_positive_double(void);
  */
 int main(void)
 {
+    setlocale(LC_ALL, "Rus");
     puts("Введите a, b, h, eps\n");
     const double a = get_positive_double();
     const double b = get_positive_double();

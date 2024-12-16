@@ -106,7 +106,9 @@ double get_elements_sum(const int n)
     double sum = current;
     for (int i = 1; i < n; i++)
     {
-        sum += get_element(current, i);
+        current = get_element(current, i);
+        sum += current;
+        
     }
     return sum;
 }
@@ -118,8 +120,8 @@ double get_sum_greater_equal_e(const double e)
     int k = 1;
     while (fabs(current) >= e - DBL_EPSILON)
     {
-        sum += current;
         current = get_element(current, k);
+        sum += current;
         k++;
     }
     return sum;
