@@ -24,6 +24,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Task4_2", "Task4_2\Task4_2.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Task4_3", "Task4_3\Task4_3.vcxproj", "{933C395C-0F05-44D2-9489-CA03C6F02756}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Stack", "Stack\Stack.vcxproj", "{71E3DB7E-F41E-4EFD-8111-0B9993AF0BD2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -128,5 +130,13 @@ Global
 		{933C395C-0F05-44D2-9489-CA03C6F02756}.Release|Win32.Build.0 = Release|Win32
 		{933C395C-0F05-44D2-9489-CA03C6F02756}.Release|x64.ActiveCfg = Release|x64
 		{933C395C-0F05-44D2-9489-CA03C6F02756}.Release|x64.Build.0 = Release|x64
+		{71E3DB7E-F41E-4EFD-8111-0B9993AF0BD2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{71E3DB7E-F41E-4EFD-8111-0B9993AF0BD2}.Debug|Win32.Build.0 = Debug|Win32
+		{71E3DB7E-F41E-4EFD-8111-0B9993AF0BD2}.Debug|x64.ActiveCfg = Debug|x64
+		{71E3DB7E-F41E-4EFD-8111-0B9993AF0BD2}.Debug|x64.Build.0 = Debug|x64
+		{71E3DB7E-F41E-4EFD-8111-0B9993AF0BD2}.Release|Win32.ActiveCfg = Release|Win32
+		{71E3DB7E-F41E-4EFD-8111-0B9993AF0BD2}.Release|Win32.Build.0 = Release|Win32
+		{71E3DB7E-F41E-4EFD-8111-0B9993AF0BD2}.Release|x64.ActiveCfg = Release|x64
+		{71E3DB7E-F41E-4EFD-8111-0B9993AF0BD2}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 EndGlobal
