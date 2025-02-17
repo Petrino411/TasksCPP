@@ -8,7 +8,7 @@ class StackItem
 public:
     StackItem* next;
 
-    explicit StackItem(int value) : data(value), next(nullptr)
+    explicit StackItem(const int value) : data(value), next(nullptr)
     {
     }
 
@@ -19,17 +19,17 @@ public:
     
 };
 
-class Stack
+class stack
 {
     int size;
     StackItem* top;
 
 public:
-    explicit Stack(const int size) : size(size), top(nullptr)
+    explicit stack(const int size) : size(size), top(nullptr)
     {
     }
 
-    ~Stack()
+    ~stack()
     {
         while (top != nullptr)
         {
@@ -66,7 +66,7 @@ public:
             cout << "Stack is empty!" << '\n';
             return;
         }
-        StackItem* temp = top;
+        const StackItem* temp = top;
         top = top->next;
         this->size++;
         delete temp;
@@ -93,7 +93,7 @@ public:
 
 int main(int argc, char* argv[])
 {
-    Stack stack(5);
+    stack stack(5);
     stack.push(10);
     stack.display();
     stack.push(20);
