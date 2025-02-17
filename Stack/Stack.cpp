@@ -3,17 +3,16 @@ using namespace std;
 
 class StackItem
 {
-private:
     int data;
 
 public:
     StackItem* next;
 
-    StackItem(int value) : data(value), next(nullptr)
+    explicit StackItem(int value) : data(value), next(nullptr)
     {
     }
 
-    int getData()
+    int getData() const
     {
         return data;
     }
@@ -22,12 +21,11 @@ public:
 
 class Stack
 {
-private:
     int size;
     StackItem* top;
 
 public:
-    Stack(int size) : size(size), top(nullptr)
+    explicit Stack(const int size) : size(size), top(nullptr)
     {
     }
 
@@ -35,20 +33,20 @@ public:
     {
         while (top != nullptr)
         {
-            StackItem* temp = top;
+            const StackItem* temp = top;
             top = top->next;
             delete temp;
         }
     }
 
-    void push(int x)
+    void push(const int x)
     {
         if (size <= 0)
         {
-            std::cout << "Stack overflow!" << std::endl;
+            cout << "Stack overflow!" << '\n';
             return;
         }
-        StackItem* temp = new StackItem(x);
+        const auto temp = new StackItem(x);
         if (top == nullptr)
         {
             top = temp;
@@ -65,7 +63,7 @@ public:
     {
         if (top == nullptr)
         {
-            std::cout << "Stack is empty!" << std::endl;
+            cout << "Stack is empty!" << '\n';
             return;
         }
         StackItem* temp = top;
@@ -74,18 +72,18 @@ public:
         delete temp;
     }
 
-    void display()
+    void display() const
     {
         if (top == nullptr)
         {
-            std::cout << "Stack is empty!" << std::endl;
+            cout << "Stack is empty!" << '\n';
             return;
         }
         StackItem* temp = top;
         cout << "====\n";
         while (temp != nullptr)
         {
-            cout << temp->getData() << endl;
+            cout << temp->getData() << '\n';
             temp = temp->next;
         }
         cout << "====\n";
