@@ -26,6 +26,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Task4_3", "Task4_3\Task4_3.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Stack", "Stack\Stack.vcxproj", "{71E3DB7E-F41E-4EFD-8111-0B9993AF0BD2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OOP", "OOP", "{6ED03F63-FD16-4123-93DB-D7B8D3E2FDE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -138,5 +140,8 @@ Global
 		{71E3DB7E-F41E-4EFD-8111-0B9993AF0BD2}.Release|Win32.Build.0 = Release|Win32
 		{71E3DB7E-F41E-4EFD-8111-0B9993AF0BD2}.Release|x64.ActiveCfg = Release|x64
 		{71E3DB7E-F41E-4EFD-8111-0B9993AF0BD2}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{71E3DB7E-F41E-4EFD-8111-0B9993AF0BD2} = {6ED03F63-FD16-4123-93DB-D7B8D3E2FDE8}
 	EndGlobalSection
 EndGlobal
