@@ -1,8 +1,12 @@
 ﻿#include "Cylinder.h"
 #include <iostream>
-#include <numbers>
-#include <sstream>
+#include <limits>
 
+
+using namespace std;
+
+
+constexpr double PI = 3.14159265358979323846;// в стандарте с++ 17 больше никак, с 20 пришлось переехать.
 
 Cylinder::Cylinder(const Point& p, const double& r, const double& h)
 {
@@ -17,7 +21,7 @@ Cylinder::Cylinder(const Point& p, const double& r, const double& h)
 
 double Cylinder::volume() const
 {
-    return std::numbers::pi * radius * radius * height;
+    return PI * radius * radius * height;
 }
 
 bool Cylinder::isInside(const Point& p) const

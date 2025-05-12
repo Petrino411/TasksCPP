@@ -1,7 +1,6 @@
 ﻿#include <iostream>
-
-#include "Classes/Cylinder.h"
-#include "Classes/Point.h"
+#include "Cylinder.h"
+#include "Point.h"
 
 
 /**
