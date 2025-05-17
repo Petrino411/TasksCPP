@@ -7,8 +7,8 @@
 class StackItem
 {
 private:
-    int data;
-    StackItem* next;
+    int data; /**@brief Целочисленное значение, хранящееся в элементе стека*/
+    StackItem* next; /**@brief Указатель на следующий элемент стека*/
 public:
 
     /**

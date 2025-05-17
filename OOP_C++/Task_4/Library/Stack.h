@@ -4,10 +4,13 @@
 #include "StackItem.h"
 #include <initializer_list>
 
+/**
+ * @brief Класс Stack
+ */
 class Stack {
-    int capacity;
-    int count;
-    StackItem* top;
+    int capacity; /**@brief Максимальная ёмкость стека*/
+    int count; /** @brief Текущий размер стека*/
+    StackItem* top; /**@brief Указатель на верхний элемент стека*/
 
 public:
     /**
@@ -73,7 +76,7 @@ public:
     bool pop();
 
     /**
-     * Вывод содержимого стека на экран
+     * @brief Вывод содержимого стека на экран
      */
     void display() const;
 
@@ -96,6 +99,9 @@ public:
      */
     void swap(Stack& first, Stack& second) noexcept;
 
+    /**
+     * @brief Очистить стек
+     */
     void clearStack();
 };
 
