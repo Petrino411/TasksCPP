@@ -17,15 +17,15 @@ Cylinder::Cylinder(const Point& p, const double& r, const double& h)
     height = h;
 }
 
-Point Cylinder::getCenter() {
+Point Cylinder::getCenter() const {
     return center;
 }
 
-double Cylinder::getRadius() {
+double Cylinder::getRadius() const{
     return radius;
 }
 
-double Cylinder::getHeight() {
+double Cylinder::getHeight() const {
     return height;
 }
 

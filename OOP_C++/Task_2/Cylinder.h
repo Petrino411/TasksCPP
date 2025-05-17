@@ -29,19 +29,19 @@ public:
      * Геттер центр
      * @return Center
      */
-    Point getCenter();
+    Point getCenter() const;
 
     /**
      * Геттер радиус
      * @return double
      */
-    double getRadius();
+    double getRadius() const;
 
     /**
      * Геттер высота
      * @return double
      */
-    double getHeight();
+    double getHeight() const;
 
     /**
      * @brief Вычисление объёма цилиндра.
