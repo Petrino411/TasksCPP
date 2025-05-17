@@ -1,0 +1,6 @@
+[submodule "OOP_C++/Task_3/external/googletest"]
+	path = OOP_C++/Task_3/external/googletest
+	url = https://github.com/google/googletest.git
+[submodule "OOP_C++/Task_4/external/googletest"]
+	path = OOP_C++/Task_4/external/googletest
+	url = https://github.com/google/googletest.git
