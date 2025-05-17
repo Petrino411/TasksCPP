@@ -15,7 +15,7 @@ private:
 
 public:
     /**
-     * Коструктор
+     * @brief Коструктор
      * @param number - число целое
      * @param shift - дробная часть
      * @param isStandard - целое число или нет
@@ -23,55 +23,55 @@ public:
     explicit Piquet(int number = 0, double shift = 0.0);
 
     /**
-     * Сереализация в строку
+     * @brief Сереализация в строку
      * @return string
      */
     std::string ToString() const;
 
     /**
-     * Сдвиг вправо
+     * @brief Сдвиг вправо
      * @param meters - метры
      * @return Piquet
      */
     Piquet operator>>(double meters);
 
     /**
-     * Сдвиг влево
+     * @brief Сдвиг влево
      * @param meters - метры
      * @return Piquet
      */
     Piquet operator<<(double meters);
 
      /**
-      * Оператор меньше
+      * @brief Оператор меньше
       * @param other Другой объект
       * @return bool
       */
     bool operator<(const Piquet& other) const;
 
     /**
-     * Оператор больше
+     * @brief Оператор больше
      * @param other Другой объект
      * @return bool
      */
     bool operator>(const Piquet& other);
 
     /**
-     * Оператор сравнения
+     * @brief Оператор сравнения
      * @param other Другой объект
      * @return bool
      */
     bool operator==(const Piquet& other);
 
     /**
-     * Оператор ввода
-     * @param in Поток ввода
-     * @param p ссылка на объект
+     * @brief Оператор ввода
+     * @param in поток ввода
+     * @param p объект
      * @return Поток ввода
      */
     friend std::istream& operator>>(std::istream& in, Piquet& p);
     /**
-     * Оператор вывода
+     * @brief Оператор вывода
      * @param out поток вывода
      * @param p объект
      * @return Поток вывода

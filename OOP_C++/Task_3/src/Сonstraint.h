@@ -5,29 +5,29 @@
 #include <string>
 
 /**
- * Абстрактный класс Ограничение
+ * @brief Абстрактный класс Ограничение
  */
 class Сonstraint {
 public:
     /**
-     * Сереализация в строку
+     * @brief Сереализация в строку
      * @return string
      */
     virtual std::string ToString() const = 0;
 
     /**
-     * Деструктор
+     * @brief Деструктор
      */
     virtual ~Сonstraint() = default;
 
     /**
-     * Чтение из потока ввода
+     * @brief Чтение из потока ввода
      * @param in поток ввода
      */
     virtual void ReadFrom(std::istream &in) = 0;
 
     /**
-     * Оператор ввода
+     * @brief Оператор ввода
      * @param in поток воода
      * @param obj ссылка на объект
      * @return  поток воода

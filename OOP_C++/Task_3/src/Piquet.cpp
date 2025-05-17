@@ -22,12 +22,12 @@ std::string Piquet::ToString() const {
 
 Piquet Piquet::operator>>(double meters) {
     double total = number * 100.0 + shift + meters;
-    return Piquet(static_cast<int>(total / 100), std::fmod(total, 100.0), isStandard);
+    return Piquet(static_cast<int>(total / 100), std::fmod(total, 100.0));
 }
 
 Piquet Piquet::operator<<(double meters) {
     double total = number * 100.0 + shift - meters;
-    return Piquet(static_cast<int>(total / 100), std::fmod(total, 100.0), isStandard);
+    return Piquet(static_cast<int>(total / 100), std::fmod(total, 100.0));
 }
 
 bool Piquet::operator<(const Piquet &other) const {

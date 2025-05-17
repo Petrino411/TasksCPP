@@ -18,26 +18,32 @@ private:
 
 public:
     /**
-     * Конструктор
+     * @brief Конструктор
      */
     SpeedLimit() : limit(0.0) {}
 
+    /**
+     * @brief Конструктор с параметрами
+     * @param s Начало ограничения
+     * @param e Конец ограничения
+     * @param l Ограничение скорости
+     */
     SpeedLimit(Piquet& s, Piquet& e, double l);
 
     /**
-     * Сериализация в строку
+     * @brief Сериализация в строку
      * @return string
      */
     std::string ToString() const override;
 
     /**
-     * Чтение из потока ввода
+     * @brief Чтение из потока ввода
      * @param in поток ввода
      */
     void ReadFrom(std::istream& in) override;
 
     /**
-     * Оператор ввода
+     * @brief Оператор ввода
      * @param out поток
      * @param s объект
      * @return поток
