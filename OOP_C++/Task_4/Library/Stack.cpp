@@ -41,19 +41,15 @@ Stack::Stack(const Stack &other) : capacity(other.capacity), count(0), top(nullp
     }
 }
 
-Stack::Stack(Stack &&other) noexcept
-        : capacity(other.capacity), count(other.count), top(other.top) {
-    other.top = nullptr;
-    other.count = 0;
-    other.capacity = 0;
+Stack::Stack(Stack&& other) noexcept
+        : capacity(0), count(0), top(nullptr) {
+    swap(*this, other);
 }
 
 Stack &Stack::operator=(const Stack &other) {
     if (this == &other) return *this;
 
-    while (top) {
-        pop();
-    }
+    clearStack();
 
     capacity = other.capacity;
     count = 0;
@@ -81,11 +77,7 @@ Stack &Stack::operator=(const Stack &other) {
 
 Stack &Stack::operator=(Stack &&other) noexcept {
     if (this == &other) return *this;
-
-    while (top) {
-        pop();
-    }
-
+    clearStack();
     capacity = other.capacity;
     count = other.count;
     top = other.top;
@@ -105,32 +97,34 @@ Stack::~Stack() {
     }
 }
 
-void Stack::push(const StackItem &item) {
-    push(item.getData());
+bool Stack::push(const StackItem &item) {
+    return push(item.getData());
 }
 
-void Stack::push(int x) {
+bool Stack::push(int x) {
     if (count >= capacity) {
         cout << "Stack overflow!" << '\n';
-        return;
+        return false;
     }
 
     auto *newItem = new StackItem(x);
     newItem->setNext(top);
     top = newItem;
     count++;
+    return true;
 }
 
-void Stack::pop() {
+bool Stack::pop() {
     if (!top) {
         cout << "Stack is empty!" << '\n';
-        return;
+        return false;
     }
 
     StackItem *temp = top;
     top = top->getNext();
     delete temp;
     count--;
+    return true;
 }
 
 void Stack::display() const {
@@ -154,4 +148,17 @@ int Stack::size() const {
 
 bool Stack::isEmpty() const {
     return top == nullptr;
+}
+
+void Stack::swap(Stack &first, Stack &second) noexcept {
+    using std::swap;
+    swap(first.top, second.top);
+    swap(first.count, second.count);
+    swap(first.capacity, second.capacity);
+}
+
+void Stack::clearStack() {
+    while (top) {
+        pop();
+    }
 }

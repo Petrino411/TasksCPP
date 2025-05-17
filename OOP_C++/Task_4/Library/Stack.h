@@ -20,12 +20,13 @@ public:
      * @param l Инициализирующий список элементов стека
      */
     Stack(std::initializer_list<StackItem> l);
+
     /**
      * @brief Конструктор копирования класса Stack
      * @param other
      */
-
     Stack(const Stack& other);
+
     /**
      * @brief Конструктор перемещения класса Stack
      * @param other
@@ -54,19 +55,22 @@ public:
     /**
      * @brief Добавить элемент в стек
      * @param x Целочисленное значение для добавления в стек
+     * @return true, если элемент успешно добавлен; false в противном случае
      */
-    void push(int x);
+    bool push(int x);
 
     /**
      * @brief Добавить элемент в стек
      * @param item Элемент стека для добавления
+     * @return true, если элемент успешно добавлен; false в противном случае
      */
-    void push(const StackItem& item);
+    bool push(const StackItem& item);
 
     /**
      * @brief Удалить верхний элемент из стека
+     * @return true, если элемент успешно удален; false в противном случае
      */
-    void pop();
+    bool pop();
 
     /**
      * Вывод содержимого стека на экран
@@ -84,6 +88,15 @@ public:
      * @return true, если стек пуст; false в противном случае
      */
     bool isEmpty() const;
+
+    /**
+     * @ Реализация swap между объектами Stack
+     * @param first первый стек
+     * @param second второй стек
+     */
+    void swap(Stack& first, Stack& second) noexcept;
+
+    void clearStack();
 };
 
 #endif //TASK_4_STACK_H

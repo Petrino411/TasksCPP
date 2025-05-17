@@ -1,7 +1,6 @@
 #include <gtest/gtest.h>
 #include "Stack.h"
 
-
 class StackTest : public ::testing::Test {
 protected:
     Stack *stack{};
@@ -23,66 +22,71 @@ TEST_F(StackTest, ConstructorNegativeSizeThrows) {
     EXPECT_THROW(Stack s(-1), std::invalid_argument);
 }
 
-TEST_F(StackTest, PushAndDisplayWorks) {
-    testing::internal::CaptureStdout();
-    stack->push(5);
-    stack->push(10);
-    stack->display();
-    std::string output = testing::internal::GetCapturedStdout();
-
-    EXPECT_NE(output.find("10"), std::string::npos);
-    EXPECT_NE(output.find("5"), std::string::npos);
+TEST_F(StackTest, PushReturnsTrue) {
+    EXPECT_TRUE(stack->push(5));
+    EXPECT_TRUE(stack->push(10));
+    EXPECT_EQ(stack->size(), 2);
 }
 
-TEST_F(StackTest, PushDecreasesSize) {
-    int initialSize = 10;
-    Stack s(initialSize);
-    for (int i = 0; i < 5; ++i) {
-        s.push(i);
-    }
-    for (int i = 0; i < 5; ++i) {
-        s.pop();
-    }
-
-    testing::internal::CaptureStdout();
-    s.push(100);
-    std::string output = testing::internal::GetCapturedStdout();
-    EXPECT_EQ(output, "");
-}
-
-TEST_F(StackTest, PushOverflow) {
+TEST_F(StackTest, PushOverflowReturnsFalse) {
     Stack s(2);
-    s.push(1);
-    s.push(2);
-
-    testing::internal::CaptureStdout();
-    s.push(3);
-    std::string output = testing::internal::GetCapturedStdout();
-    EXPECT_NE(output.find("Stack overflow!"), std::string::npos);
+    EXPECT_TRUE(s.push(1));
+    EXPECT_TRUE(s.push(2));
+    EXPECT_FALSE(s.push(3));
+    EXPECT_EQ(s.size(), 2);
 }
 
-TEST_F(StackTest, PopWorks) {
+TEST_F(StackTest, PopReturnsTrueAndChangesTop) {
     stack->push(1);
     stack->push(2);
-    stack->pop();
+    EXPECT_TRUE(stack->pop());
 
     testing::internal::CaptureStdout();
     stack->display();
     std::string output = testing::internal::GetCapturedStdout();
+
     EXPECT_NE(output.find("1"), std::string::npos);
     EXPECT_EQ(output.find("2"), std::string::npos);
 }
 
-TEST_F(StackTest, PopEmptyStack) {
-    testing::internal::CaptureStdout();
-    stack->pop();
-    std::string output = testing::internal::GetCapturedStdout();
-    EXPECT_NE(output.find("Stack is empty!"), std::string::npos);
+TEST_F(StackTest, PopEmptyReturnsFalse) {
+    EXPECT_FALSE(stack->pop());
 }
 
-TEST_F(StackTest, DisplayEmptyStack) {
+TEST_F(StackTest, PushAndPopMultiple) {
+    for (int i = 0; i < 5; ++i)
+        EXPECT_TRUE(stack->push(i));
+
+    for (int i = 0; i < 5; ++i)
+        EXPECT_TRUE(stack->pop());
+
+    EXPECT_TRUE(stack->isEmpty());
+    EXPECT_EQ(stack->size(), 0);
+}
+
+TEST_F(StackTest, DisplayEmptyStackOutput) {
     testing::internal::CaptureStdout();
     stack->display();
     std::string output = testing::internal::GetCapturedStdout();
     EXPECT_NE(output.find("Stack is empty!"), std::string::npos);
+}
+
+TEST_F(StackTest, DisplayShowsAllItemsInOrder) {
+    stack->push(1);
+    stack->push(2);
+    stack->push(3);
+
+    testing::internal::CaptureStdout();
+    stack->display();
+    std::string output = testing::internal::GetCapturedStdout();
+
+    size_t pos3 = output.find("3");
+    size_t pos2 = output.find("2");
+    size_t pos1 = output.find("1");
+
+    ASSERT_NE(pos3, std::string::npos);
+    ASSERT_NE(pos2, std::string::npos);
+    ASSERT_NE(pos1, std::string::npos);
+
+    EXPECT_TRUE(pos3 < pos2 && pos2 < pos1);
 }
