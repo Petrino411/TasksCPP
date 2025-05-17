@@ -29,39 +29,27 @@ public:
     std::string ToString() const;
 
     /**
-     * @brief Сдвиг вправо
-     * @param meters - метры
-     * @return Piquet
+     * @brief Оператор меньше
+     * @param other Другой объект
+     * @return bool
      */
-    Piquet operator>>(double meters);
-
-    /**
-     * @brief Сдвиг влево
-     * @param meters - метры
-     * @return Piquet
-     */
-    Piquet operator<<(double meters);
-
-     /**
-      * @brief Оператор меньше
-      * @param other Другой объект
-      * @return bool
-      */
-    bool operator<(const Piquet& other) const;
+    bool operator<(const Piquet &other) const;
 
     /**
      * @brief Оператор больше
      * @param other Другой объект
      * @return bool
      */
-    bool operator>(const Piquet& other);
+    bool operator>(const Piquet &other) const;
 
     /**
      * @brief Оператор сравнения
      * @param other Другой объект
      * @return bool
      */
-    bool operator==(const Piquet& other);
+    bool operator==(const Piquet &other);
+
+    bool operator!=(const Piquet &other);
 
     /**
      * @brief Оператор ввода
@@ -69,14 +57,15 @@ public:
      * @param p объект
      * @return Поток ввода
      */
-    friend std::istream& operator>>(std::istream& in, Piquet& p);
+    friend std::istream &operator>>(std::istream &in, Piquet &p);
+
     /**
      * @brief Оператор вывода
      * @param out поток вывода
      * @param p объект
      * @return Поток вывода
      */
-    friend std::ostream& operator<<(std::ostream& out, const Piquet& p);
+    friend std::ostream &operator<<(std::ostream &out, const Piquet &p);
 };
 
 

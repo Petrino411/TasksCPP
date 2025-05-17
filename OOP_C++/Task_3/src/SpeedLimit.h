@@ -42,13 +42,6 @@ public:
      */
     void ReadFrom(std::istream& in) override;
 
-    /**
-     * @brief Оператор ввода
-     * @param out поток
-     * @param s объект
-     * @return поток
-     */
-    friend std::ostream& operator<<(std::ostream& out, const SpeedLimit& s);
 };
 
 

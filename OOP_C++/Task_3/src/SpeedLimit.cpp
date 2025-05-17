@@ -5,7 +5,9 @@ SpeedLimit::SpeedLimit(Piquet& s, Piquet& e, double l) : start(s), end(e), limit
     if (l <= 0 || l > 80) {
         throw std::runtime_error("Некорректное значение ограничения скорости");
     }
-
+    if(s > e){
+        throw std::runtime_error("Некорректное значение начала ограничения скорости");
+    }
 }
 
 std::string SpeedLimit::ToString() const {
@@ -22,7 +24,5 @@ void SpeedLimit::ReadFrom(std::istream &in) {
     }
 }
 
-std::ostream &operator<<(std::ostream &out, const SpeedLimit &s) {
-    out << s.ToString();
-    return out;
-}
+
+

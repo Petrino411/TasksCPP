@@ -7,7 +7,10 @@
 Piquet::Piquet(int n, double s) {
     number = n;
     shift = s;
-    isStandard = n==100.0 && s==0.0;
+    if(n < 0 || s < 0.0){
+        throw std::invalid_argument("Числа не могут быть отрицательными");
+    }
+    isStandard = (n == 100) && (std::abs(s) < std::numeric_limits<double>::epsilon());
 }
 
 std::string Piquet::ToString() const {
@@ -20,26 +23,20 @@ std::string Piquet::ToString() const {
     return oss.str();
 }
 
-Piquet Piquet::operator>>(double meters) {
-    double total = number * 100.0 + shift + meters;
-    return Piquet(static_cast<int>(total / 100), std::fmod(total, 100.0));
-}
-
-Piquet Piquet::operator<<(double meters) {
-    double total = number * 100.0 + shift - meters;
-    return Piquet(static_cast<int>(total / 100), std::fmod(total, 100.0));
-}
-
 bool Piquet::operator<(const Piquet &other) const {
-    return number * 100 + shift < other.number * 100 + other.shift;
+    return number + shift < other.number + other.shift;
 }
 
-bool Piquet::operator>(const Piquet &other) {
-    return other < *this;
+bool Piquet::operator>(const Piquet &other) const {
+    return number + shift > other.number + other.shift;
 }
 
 bool Piquet::operator==(const Piquet &other) {
-    return number == other.number && std::abs(shift - other.shift) < 1e-6;
+    return (number == other.number) && (std::abs(shift - other.shift) < std::numeric_limits<double>::epsilon());
+}
+
+bool Piquet::operator!=(const Piquet &other) {
+    return !(*this == other);
 }
 
 std::istream &operator>>(std::istream &in, Piquet &p) {
@@ -53,3 +50,5 @@ std::ostream &operator<<(std::ostream &out, const Piquet &p) {
     out << p.ToString();
     return out;
 }
+
+
