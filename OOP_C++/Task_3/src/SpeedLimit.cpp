@@ -18,6 +18,9 @@ std::string SpeedLimit::ToString() const {
 }
 
 void SpeedLimit::ReadFrom(std::istream &in) {
+    if(start > end){
+        throw std::runtime_error("Некорректное значение начала ограничения скорости");
+    }
     in >> start >> end >> limit;
     if (limit <= 0 || limit > 80) {
         throw std::runtime_error("Некорректное значение ограничения скорости");
