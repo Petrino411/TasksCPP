@@ -4,10 +4,10 @@
 #include "Piquet.h"
 
 
-Piquet::Piquet(int n, double s, bool isSt) {
+Piquet::Piquet(int n, double s) {
     number = n;
     shift = s;
-    isStandard = isSt;
+    isStandard = n==100.0 && s==0.0;
 }
 
 std::string Piquet::ToString() const {

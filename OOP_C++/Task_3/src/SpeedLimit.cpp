@@ -1,5 +1,13 @@
 #include "SpeedLimit.h"
 
+
+SpeedLimit::SpeedLimit(Piquet& s, Piquet& e, double l) : start(s), end(e), limit(l) {
+    if (l <= 0 || l > 80) {
+        throw std::runtime_error("Некорректное значение ограничения скорости");
+    }
+
+}
+
 std::string SpeedLimit::ToString() const {
     std::ostringstream oss;
     oss << "Ограничение скорости: " << limit << " км/ч "

@@ -4,11 +4,14 @@
 
 #include <string>
 
+/**
+ * Класс Piquet - единица измерения расстояния
+ */
 class Piquet {
 private:
-    int number;
-    double shift;
-    bool isStandard;
+    int number; /**@brief Целая часть*/
+    double shift; /**@brief Дробная часть*/
+    bool isStandard; /** @brief Стандартная единица измерения или нет (100м)*/
 
 public:
     /**
@@ -17,7 +20,7 @@ public:
      * @param shift - дробная часть
      * @param isStandard - целое число или нет
      */
-    explicit Piquet(int number = 0, double shift = 0.0, bool isStandard = true);
+    explicit Piquet(int number = 0, double shift = 0.0);
 
     /**
      * Сереализация в строку

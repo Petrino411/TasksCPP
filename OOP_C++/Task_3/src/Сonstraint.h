@@ -4,6 +4,9 @@
 
 #include <string>
 
+/**
+ * Абстрактный класс Ограничение
+ */
 class Сonstraint {
 public:
     /**
@@ -11,23 +14,25 @@ public:
      * @return string
      */
     virtual std::string ToString() const = 0;
+
     /**
      * Деструктор
      */
-    virtual ~Сonstraint() {}
+    virtual ~Сonstraint() = default;
+
     /**
      * Чтение из потока ввода
      * @param in поток ввода
      */
-    virtual void ReadFrom(std::istream& in) = 0;
+    virtual void ReadFrom(std::istream &in) = 0;
 
-/**
- * Оператор ввода
- * @param in поток воода
- * @param obj ссылка на объект
- * @return  поток воода
- */
-    friend std::istream& operator>>(std::istream& in, Сonstraint& obj);
+    /**
+     * Оператор ввода
+     * @param in поток воода
+     * @param obj ссылка на объект
+     * @return  поток воода
+     */
+    friend std::istream &operator>>(std::istream &in, Сonstraint &obj);
 };
 
 
