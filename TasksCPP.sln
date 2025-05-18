@@ -16,19 +16,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Task3_1", "CLang\Task3_1\Ta
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Task3_2", "CLang\Task3_2\Task3_2.vcxproj", "{81E1A57E-8930-4BDB-8B47-FB75D29F852A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Task3_3", "CLang\Task3_3\Task3_3.vcxproj", "{21048C09-292A-41AC-987D-53BA5E770B79}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC9ы42}") = "Task3_3", "CLang\Task3_3\Task3_3.vcxproj", "{21048C09-292A-41AC-987D-53BA5E770B79}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Task4_1", "CLang\Task4_1\Task4_1.vcxproj", "{1ECAE087-D6C4-4632-8405-AAF0D88C9D12}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Task4_2", "CLang\Task4_2\Task4_2.vcxproj", "{EB7DA0A9-4FC7-433B-97B0-1A6BED967324}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Task4_3", "CLang\Task4_3\Task4_3.vcxproj", "{933C395C-0F05-44D2-9489-CA03C6F02756}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Stack", "OOP_C++\Stack\Stack.vcxproj", "{71E3DB7E-F41E-4EFD-8111-0B9993AF0BD2}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Task_1", "OOP_C++\Task_1\Task_1.vcxproj", "{D601704A-02DA-4728-B414-CE182FD127CC}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Task_2", "OOP_C++\Task_2\Task_2.vcxproj", "{F5736221-DB34-4E13-A21C-C6BDB59E40C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

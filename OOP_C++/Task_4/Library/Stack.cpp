@@ -82,10 +82,8 @@ Stack &Stack::operator=(Stack &&other) noexcept {
     count = other.count;
     top = other.top;
 
-    other.top = nullptr;
-    other.count = 0;
-    other.capacity = 0;
 
+    swap(*this, other);
     return *this;
 }
 

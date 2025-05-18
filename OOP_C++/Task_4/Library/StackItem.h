@@ -1,6 +1,7 @@
 #ifndef TASK_4_STACKITEM_H
 #define TASK_4_STACKITEM_H
 
+
 /**
  * Класс StackItem
  */

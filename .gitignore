@@ -11,3 +11,5 @@ riderModule.iml
 TasksCPP.sln.DotSettings.user
 x64*
 
+/OOP_C++/Task_3/cmake-build-debug
+/OOP_C++/Task_4/cmake-build-debug
