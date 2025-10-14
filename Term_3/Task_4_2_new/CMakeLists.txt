@@ -1,7 +1,10 @@
-cmake_minimum_required(VERSION 4.0)
+cmake_minimum_required(VERSION 3.16)
 project(Task_4_2_new)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(Task_4_2_new main.cpp
-        array_functions.h)
+
+add_subdirectory(library)
+add_subdirectory(app)
+add_subdirectory(Tests)
