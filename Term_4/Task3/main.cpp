@@ -119,7 +119,7 @@ void processAndPrint(const multimap<char, string>& M) {
 
             result = accumulate(
                 rbeginGroup,
-                prev(rendGroup), // исключаем последнее слово группы
+                prev(rendGroup),
                 string(),
                 [](const string& acc, const pair<const char, string>& elem) {
                     return acc + elem.second + " ";
